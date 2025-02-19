@@ -18,7 +18,9 @@ fun App() {
             onNavigateToPhoneScreen = {currentScreen = "phoneScreen"}
         )
         "phoneScreen" -> PhoneScreen(
-            onNavigateToStartScreen = {currentScreen = "startScreen"}
+            onNavigateToStartScreen = {currentScreen = "startScreen"},
+            onNavigateToCodeScreen = {currentScreen = "codeScreen"}
         )
+
     }
 }
