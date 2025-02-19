@@ -47,96 +47,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingView("АвтоСпас")
+                    App()
                 }
             }
         }
     }
 }
 
-@Composable
-fun GreetingView(text: String) {
-    Column {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(60.dp, 100.dp),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = "Авто",
-                textAlign = TextAlign.Center,
-                color = Color.Black,
-                fontSize = 60.sp,
-                modifier = Modifier
-                    .padding(0.dp),
-                fontWeight = FontWeight.Bold
-
-            )
-
-            Text(
-                text = "Спас",
-                textAlign = TextAlign.Center,
-                color = Color(0xffE53B19),
-                fontSize = 60.sp,
-                modifier = Modifier
-                    .padding(0.dp),
-                fontWeight = FontWeight.Bold
-            )
-        }
-        Image(
-            painter = painterResource(R.drawable.truck),
-            contentDescription = "Orange Truck",
-            alignment = Alignment.CenterEnd,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(350.dp)
-        )
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Column(
-                modifier = Modifier
-                    .padding(vertical = 30.dp),
-                verticalArrangement = Arrangement.spacedBy(15.dp)
-            ) {
-                Button(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(60.dp)
-                        .padding(horizontal = 40.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(3.dp, color = Color(0xffE53B19)),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
-                    onClick = { }
-                ) { Text(text="Регистрация",
-                    fontSize = 16.sp) }
-                Button(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(60.dp)
-                        .padding(horizontal = 40.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(3.dp, color = Color(0xffE8E7E7)),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xffffff)),
-                    onClick = { }
-                ) { Text(
-                    text="Вход",
-                    color = Color(0xffE53B19),
-                    fontSize = 16.sp)  }
-
-            }
-        }
-    }
 
 
-}
 
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("АвтоСпас")
-    }
-}
