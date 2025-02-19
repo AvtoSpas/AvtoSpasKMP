@@ -4,5 +4,6 @@ package com.example.avtospaskmp.android.navigation
 sealed class Screen {
     object StartScreen : Screen()
     object PhoneScreen : Screen()
-    object CodeScreen : Screen()
+    data class CodeScreen(val phoneNumberFrom: String) : Screen()
+    object FirstRegScreen : Screen()
 }

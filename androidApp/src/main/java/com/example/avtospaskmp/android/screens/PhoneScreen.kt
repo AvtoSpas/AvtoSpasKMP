@@ -43,7 +43,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun PhoneScreen(onNavigateToStartScreen: ()-> Unit, onNavigateToCodeScreen: ()-> Unit) {
+fun PhoneScreen(onNavigateToStartScreen: ()-> Unit, onNavigateToCodeScreen: (String)-> Unit) {
     var phoneNumber by remember { mutableStateOf("+7") }
     Column {
         Row (
@@ -54,7 +54,7 @@ fun PhoneScreen(onNavigateToStartScreen: ()-> Unit, onNavigateToCodeScreen: ()->
         {
             IconButton (
                 onClick = onNavigateToStartScreen,
-                Modifier.size(50.dp)
+                Modifier.size(45.dp)
                 ) {
                 Icon(
                     Icons.Filled.KeyboardArrowLeft,
@@ -127,12 +127,12 @@ fun PhoneScreen(onNavigateToStartScreen: ()-> Unit, onNavigateToCodeScreen: ()->
                         .height(50.dp)
                         .fillMaxWidth()
                         .padding(horizontal = 40.dp)
-                        .border(3.dp, Color.Black, RoundedCornerShape(12.dp)),
+                        .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(12.dp)),
                     decorationBox = { innerTextField ->
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(10.dp)
+                                .padding(vertical = 10.dp, horizontal = 20.dp)
                         ) {
                             innerTextField() // Помещаем реальное поле ввода сюда
                         }
@@ -148,7 +148,7 @@ fun PhoneScreen(onNavigateToStartScreen: ()-> Unit, onNavigateToCodeScreen: ()->
                     shape = RoundedCornerShape(12.dp),
                     border = BorderStroke(3.dp, color = Color(0xffE53B19)),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
-                    onClick = onNavigateToCodeScreen
+                    onClick = { onNavigateToCodeScreen(phoneNumber) }
                 ) { Text(text="Далее",
                     fontSize = 16.sp) }
             }
