@@ -35,7 +35,7 @@ fun App() {
             onNavigateToFirstRegScreen = {currentScreen = "firstRegScreen"}
         )
         "firstRegScreen" -> FirstRegScreen(
-
+            onNavigateToCodeScreen = {currentScreen = "codeScreen"}
         )
 
     }
