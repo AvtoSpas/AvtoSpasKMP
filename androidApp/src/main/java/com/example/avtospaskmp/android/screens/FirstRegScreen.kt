@@ -45,8 +45,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(15.dp, top = 60.dp)
-        )
-        {
+        ) {
             IconButton (
                 onClick = onNavigateToCodeScreen,
                 Modifier.size(45.dp)
@@ -69,8 +68,6 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                 textAlign = TextAlign.Center,
                 color = Color.Black,
                 fontSize = 40.sp,
-                modifier = Modifier
-                    .padding(0.dp),
                 fontWeight = FontWeight.Bold
 
             )
@@ -80,8 +77,6 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                 textAlign = TextAlign.Center,
                 color = Color(0xffE53B19),
                 fontSize = 40.sp,
-                modifier = Modifier
-                    .padding(0.dp),
                 fontWeight = FontWeight.Bold
             )
         }
@@ -90,7 +85,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                 .fillMaxWidth()
                 .padding(top = 170.dp),
             horizontalArrangement = Arrangement.Center
-        ){
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -99,83 +94,88 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                 Text(
                     text = "Введите данные о себе",
                     textAlign = TextAlign.Center,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Column (
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(25.dp)
-                ){
-                    BasicTextField(
-                        value = surname,
-                        textStyle = TextStyle(
-                            fontSize = 20.sp,
-                            textAlign = TextAlign.Center
-                        ),
-                        onValueChange = {
-                            surname = it
-                        },
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(30.dp)
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        BasicTextField(
+                            value = surname,
+                            textStyle = TextStyle(
+                                fontSize = 20.sp,
+                                textAlign = TextAlign.Center
+                            ),
+                            onValueChange = {
+                                surname = it
+                            },
 
-                        modifier = Modifier
-                            .height(50.dp)
-                            .fillMaxWidth()
-                            .padding(horizontal = 40.dp)
-                            .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(12.dp)),
-                        decorationBox = { innerTextField ->
-                            Box(
-                                contentAlignment = Alignment.Center,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 10.dp)
-                            ) {
-                                if(surname.isEmpty())
-                                    Text(
-                                        text = "Иванов",
-                                        color = Color(0xffE8E7E7)
-                                    )
-                                innerTextField() // Помещаем реальное поле ввода сюда
+                            modifier = Modifier
+                                .height(50.dp)
+                                .fillMaxWidth()
+                                .padding(horizontal = 30.dp)
+                                .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(14.dp)),
+                            decorationBox = { innerTextField ->
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 10.dp)
+                                ) {
+                                    if(surname.isEmpty())
+                                        Text(
+                                            text = "Иван",
+                                            color = Color(0xffE8E7E7)
+                                        )
+                                    innerTextField() // Помещаем реальное поле ввода сюда
+                                }
                             }
-                        }
-                    )
-                    BasicTextField(
-                        value = name,
-                        textStyle = TextStyle(
-                            fontSize = 20.sp,
-                            textAlign = TextAlign.Center
-                        ),
-                        onValueChange = {
-                            name = it
-                        },
+                        )
+                        BasicTextField(
+                            value = name,
+                            textStyle = TextStyle(
+                                fontSize = 20.sp,
+                                textAlign = TextAlign.Center
+                            ),
+                            onValueChange = {
+                                name = it
+                            },
 
-                        modifier = Modifier
-                            .height(50.dp)
-                            .fillMaxWidth()
-                            .padding(horizontal = 40.dp)
-                            .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(12.dp)),
-                        decorationBox = { innerTextField ->
-                            Box(
-                                contentAlignment = Alignment.Center,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 10.dp)
-                            ) {
-                                if(name.isEmpty())
-                                    Text(
-                                        text = "Иван",
-                                        color = Color(0xffE8E7E7)
-                                    )
-                                innerTextField() // Помещаем реальное поле ввода сюда
+                            modifier = Modifier
+                                .height(50.dp)
+                                .fillMaxWidth()
+                                .padding(horizontal = 30.dp)
+                                .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(14.dp)),
+                            decorationBox = { innerTextField ->
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 10.dp)
+                                ) {
+                                    if(name.isEmpty())
+                                        Text(
+                                            text = "Иванов",
+                                            color = Color(0xffE8E7E7)
+                                        )
+                                    innerTextField() // Помещаем реальное поле ввода сюда
+                                }
                             }
-                        }
-                    )
+                        )
+                    }
+
                     Button(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(50.dp)
-                            .padding(horizontal = 40.dp),
-                        shape = RoundedCornerShape(12.dp),
+                            .height(47.dp)
+                            .padding(horizontal = 30.dp),
+                        shape = RoundedCornerShape(14.dp),
                         border = BorderStroke(3.dp, color = Color(0xffE53B19)),
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
                         onClick = {  }

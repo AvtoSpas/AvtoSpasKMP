@@ -38,28 +38,32 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun PhoneScreen(onNavigateToStartScreen: ()-> Unit, onNavigateToCodeScreen: (String)-> Unit) {
-    var phoneNumber by remember { mutableStateOf("+7") }
+fun PhoneScreen(
+    onNavigateToStartScreen: ()-> Unit,
+    onNavigateToCodeScreen: (String)-> Unit
+) {
+    var phoneNumber by remember { mutableStateOf(TextFieldValue("+7")) }
+
     Column {
         Row (
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(15.dp, top = 60.dp)
-        )
-        {
+        ) {
             IconButton (
                 onClick = onNavigateToStartScreen,
-                Modifier.size(45.dp)
+                modifier = Modifier.size(45.dp)
                 ) {
                 Icon(
                     Icons.Filled.KeyboardArrowLeft,
                     contentDescription = "Кнопка назад",
-                    Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize()
                 )
             }
         }
@@ -74,8 +78,6 @@ fun PhoneScreen(onNavigateToStartScreen: ()-> Unit, onNavigateToCodeScreen: (Str
                 textAlign = TextAlign.Center,
                 color = Color.Black,
                 fontSize = 40.sp,
-                modifier = Modifier
-                    .padding(0.dp),
                 fontWeight = FontWeight.Bold
 
             )
@@ -85,8 +87,6 @@ fun PhoneScreen(onNavigateToStartScreen: ()-> Unit, onNavigateToCodeScreen: (Str
                 textAlign = TextAlign.Center,
                 color = Color(0xffE53B19),
                 fontSize = 40.sp,
-                modifier = Modifier
-                    .padding(0.dp),
                 fontWeight = FontWeight.Bold
             )
         }
@@ -97,76 +97,116 @@ fun PhoneScreen(onNavigateToStartScreen: ()-> Unit, onNavigateToCodeScreen: (Str
             horizontalArrangement = Arrangement.Center
         ){
             Column(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(15.dp)
             ) {
                 Text(
                     text = "Введите номер телефона",
                     textAlign = TextAlign.Center,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
                     modifier = Modifier.fillMaxWidth()
                 )
                 BasicTextField(
                     value = phoneNumber,
+                    onValueChange = { newValue ->
+                        if (newValue.text.startsWith("+7")) {
+                            val formatted = formatPhoneNumber(newValue)
+                            phoneNumber = formatted
+                        }
+                    },
                     textStyle = TextStyle(
                         fontSize = 20.sp
                     ),
-                    onValueChange = {
-                        if(it.length <= 18) {
-                            phoneNumber = formatPhoneNumber(it)
-                        }
-
-                    },
                     keyboardOptions = KeyboardOptions.Default.copy(
                         keyboardType = KeyboardType.Phone
                     ),
-
                     modifier = Modifier
                         .height(50.dp)
                         .fillMaxWidth()
-                        .padding(horizontal = 40.dp)
-                        .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(12.dp)),
+                        .padding(horizontal = 30.dp)
+                        .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(14.dp)),
                     decorationBox = { innerTextField ->
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(vertical = 10.dp, horizontal = 20.dp)
                         ) {
-                            innerTextField() // Помещаем реальное поле ввода сюда
+                            if (phoneNumber.text.isEmpty())
+                                Text(
+                                    text = "+7 (000) 000-00-00",
+                                    color = Color(0xffE8E7E7)
+                                )
+                            innerTextField() // Отображаем поле ввода
                         }
                     }
-
-                    //ToDo поправить курсор при вводе номера телефона
                 )
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(50.dp)
-                        .padding(horizontal = 40.dp),
-                    shape = RoundedCornerShape(12.dp),
+                        .height(47.dp)
+                        .padding(horizontal = 30.dp),
+                    shape = RoundedCornerShape(14.dp),
                     border = BorderStroke(3.dp, color = Color(0xffE53B19)),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
-                    onClick = { onNavigateToCodeScreen(phoneNumber) }
+                    onClick = { onNavigateToCodeScreen(phoneNumber.text) }
                 ) { Text(text="Далее",
-                    fontSize = 16.sp) }
+                    fontSize = 16.sp)
+                }
             }
         }
     }
 
 
 }
-fun formatPhoneNumber(number: String): String {
-    // Форматируем строку как +7 (XXX) XXX-XXXX
-    val cleanNumber = number.replace("[^\\d]".toRegex(), "") // Убираем все нецифровые символы
-    val formatted = when {
-        cleanNumber.length <= 1 -> "+7" // Префикс +7
-        cleanNumber.length <= 4 -> "+7 (${cleanNumber.drop(1)})" // (XXX)
-        cleanNumber.length <= 7 -> "+7 (${cleanNumber.drop(1).take(3)}) ${cleanNumber.drop(4).take(3)}"
-        cleanNumber.length <= 9 -> "+7 (${cleanNumber.drop(1).take(3)}) ${cleanNumber.drop(4).take(3)}-${cleanNumber.drop(5).take(2)}"// (XXX) XXX
-        cleanNumber.length <= 11 -> "+7 (${cleanNumber.drop(1).take(3)}) ${cleanNumber.drop(4).take(3)}-${cleanNumber.drop(7).take(2)}-${cleanNumber.drop(9).take(2)}"// (XXX) XXX-XXXX
-        else -> "+7 (${cleanNumber.drop(1).take(3)}) ${cleanNumber.drop(4).take(3)}-${cleanNumber.drop(7).take(4)}" // Максимум 12 символов
+fun formatPhoneNumber(newValue: TextFieldValue): TextFieldValue {
+    val cleanInput = newValue.text
+        .replace("[^\\d]".toRegex(), "")
+        .replaceFirst("^7+".toRegex(), "")
+        .take(10)
+
+    val mask = "+7 (XXX) XXX-XX-XX"
+    val formatted = buildString {
+        append("+7")
+        var index = 0
+        for (char in mask.drop(2)) {
+            if (index >= cleanInput.length) break
+            when (char) {
+                'X' -> {
+                    append(cleanInput[index])
+                    index++
+                }
+                else -> append(char)
+            }
+        }
     }
-    return formatted
+
+    val newCursorPosition = calculateNewCursorPosition(
+        oldText = newValue.text,
+        newText = formatted,
+        oldCursorPosition = newValue.selection.start
+    )
+
+    return TextFieldValue(
+        text = formatted,
+        selection = TextRange(newCursorPosition)
+    )
+}
+
+fun calculateNewCursorPosition(oldText: String, newText: String, oldCursorPosition: Int): Int {
+    if (oldCursorPosition > oldText.length) return newText.length
+
+    val beforeCursor = oldText.substring(0, oldCursorPosition)
+    val nonDigitsBefore = beforeCursor.replace("[\\d]".toRegex(), "").length
+    val digitsBefore = oldCursorPosition - nonDigitsBefore
+
+    var newCursor = 0
+    var digitsCount = 0
+    for (i in newText.indices) {
+        if (digitsCount >= digitsBefore) break
+        if (newText[i].isDigit()) digitsCount++
+        newCursor++
+    }
+
+    return newCursor.coerceAtMost(newText.length)
 }

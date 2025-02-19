@@ -29,9 +29,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,15 +41,15 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun CodeScreen(phoneNumber:String,
                onNavigateToPhoneScreen: () -> Unit,
-               onNavigateToFirstRegScreen:()->Unit){
-    var code by remember { mutableStateOf("") }
+               onNavigateToFirstRegScreen:()->Unit
+) {
+    var code by remember { mutableStateOf(TextFieldValue(""))}
     Column {
         Row (
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(15.dp, top = 60.dp)
-        )
-        {
+        ) {
             IconButton (
                 onClick = onNavigateToPhoneScreen,
                 Modifier.size(45.dp)
@@ -70,10 +72,7 @@ fun CodeScreen(phoneNumber:String,
                 textAlign = TextAlign.Center,
                 color = Color.Black,
                 fontSize = 40.sp,
-                modifier = Modifier
-                    .padding(0.dp),
                 fontWeight = FontWeight.Bold
-
             )
 
             Text(
@@ -81,8 +80,6 @@ fun CodeScreen(phoneNumber:String,
                 textAlign = TextAlign.Center,
                 color = Color(0xffE53B19),
                 fontSize = 40.sp,
-                modifier = Modifier
-                    .padding(0.dp),
                 fontWeight = FontWeight.Bold
             )
         }
@@ -91,23 +88,22 @@ fun CodeScreen(phoneNumber:String,
                 .fillMaxWidth()
                 .padding(top = 170.dp),
             horizontalArrangement = Arrangement.Center
-        ){
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                verticalArrangement = Arrangement.spacedBy(15.dp)
             ) {
                 Text(
                     text = "Код был отправлен на номер ${phoneNumber}",
                     textAlign = TextAlign.Center,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Column (
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(25.dp)
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(40.dp)
                 ){
                     BasicTextField(
                         value = code,
@@ -115,21 +111,20 @@ fun CodeScreen(phoneNumber:String,
                             fontSize = 20.sp,
                             textAlign = TextAlign.Center
                         ),
-                        onValueChange = {
-                            if(it.length <= 7) {
-                                code = formatCode(it)
+                        onValueChange = { newValue ->
+                            if (newValue.text.length <= 7) {
+                                val formatted = formatCode(newValue)
+                                code = formatted
                             }
-
                         },
                         keyboardOptions = KeyboardOptions.Default.copy(
-                            keyboardType = KeyboardType.Phone
+                            keyboardType = KeyboardType.Number
                         ),
-
                         modifier = Modifier
                             .height(50.dp)
                             .fillMaxWidth()
-                            .padding(horizontal = 40.dp)
-                            .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(12.dp)),
+                            .padding(horizontal = 30.dp)
+                            .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(14.dp)),
                         decorationBox = { innerTextField ->
                             Box(
                                 contentAlignment = Alignment.Center,
@@ -137,51 +132,79 @@ fun CodeScreen(phoneNumber:String,
                                     .fillMaxWidth()
                                     .padding(vertical = 10.dp)
                             ) {
-                                if(code.isEmpty())
+                                if (code.text.isEmpty())
                                     Text(
                                         text = "___-___",
                                         color = Color(0xffE8E7E7)
                                     )
-                                innerTextField() // Помещаем реальное поле ввода сюда
+                                innerTextField()
                             }
                         }
                     )
-                    Button(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(50.dp)
-                            .padding(horizontal = 40.dp),
-                        shape = RoundedCornerShape(12.dp),
-                        border = BorderStroke(3.dp, color = Color(0xffE53B19)),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
-                        onClick = onNavigateToFirstRegScreen
-                    ) { Text(text="Далее",
-                        fontSize = 16.sp) }
-                    Button(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(50.dp)
-                            .padding(horizontal = 40.dp),
-                        shape = RoundedCornerShape(12.dp),
-                        border = BorderStroke(3.dp, color = Color(0xffE8E7E7)),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xffffff)),
-                        onClick = { }
-                    ) { Text(text="Отправить код еще раз",
-                        color = Color(0xffE53B19),
-                        fontSize = 16.sp) }
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(20.dp)
+                    ) {
+                        Button(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(47.dp)
+                                .padding(horizontal = 30.dp),
+                            shape = RoundedCornerShape(14.dp),
+                            border = BorderStroke(3.dp, color = Color(0xffE53B19)),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
+                            onClick = onNavigateToFirstRegScreen
+                        ) { Text(text="Далее",
+                            fontSize = 16.sp) }
+                        Button(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(47.dp)
+                                .padding(horizontal = 30.dp),
+                            shape = RoundedCornerShape(14.dp),
+                            border = BorderStroke(3.dp, color = Color(0xffE8E7E7)),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xffffffff)),
+                            onClick = { }
+                        ) { Text(text="Отправить код еще раз",
+                            color = Color(0xffE53B19),
+                            fontSize = 16.sp) }
+                    }
                 }
             }
         }
     }
 }
 
-fun formatCode(code: String): String {
-    val cleanCode = code.replace("[^\\d]".toRegex(), "")
-    val formatted = when {
-        cleanCode.length <= 3 -> "${cleanCode}"
-        cleanCode.length <= 7 -> "${cleanCode.take(3)}-${cleanCode.drop(3).take(3)}"
-        else -> "${cleanCode.take(3)}-${cleanCode.drop(3).take(3)}"
+fun formatCode(newValue: TextFieldValue): TextFieldValue {
+    val cleanCode = newValue.text.replace("[^\\d]".toRegex(), "")
+    val formatted = buildString {
+        for (i in cleanCode.indices) {
+            if (i == 3) append("-")
+            append(cleanCode[i])
+        }
+    }.take(7)
 
-    }
-    return formatted
+    val newCursorPosition = calculateCodeCursorPosition(
+        oldText = newValue.text,
+        newText = formatted,
+        oldCursorPosition = newValue.selection.start
+    )
+
+    return TextFieldValue(
+        text = formatted,
+        selection = TextRange(newCursorPosition)
+    )
+}
+
+fun calculateCodeCursorPosition(oldText: String, newText: String, oldCursorPosition: Int): Int {
+    if (oldCursorPosition > oldText.length) return newText.length
+
+    val isAdding = newText.length > oldText.length
+    val wasDashAdded = newText.count { it == '-' } > oldText.count { it == '-' }
+
+    return when {
+        isAdding && wasDashAdded -> oldCursorPosition + 1
+        !isAdding && wasDashAdded -> oldCursorPosition - 1
+        else -> oldCursorPosition
+    }.coerceIn(0, newText.length)
 }
