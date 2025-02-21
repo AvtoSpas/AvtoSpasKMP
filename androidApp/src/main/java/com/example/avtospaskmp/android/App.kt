@@ -10,14 +10,15 @@ import com.example.avtospaskmp.android.screens.CodeScreen
 import com.example.avtospaskmp.android.screens.FirstRegScreen
 import com.example.avtospaskmp.android.screens.StartScreen
 import com.example.avtospaskmp.android.screens.PhoneScreen
+import com.example.avtospaskmp.android.screens.theme.ColorScheme
 
 @Composable
-fun App() {
+fun App(colorScheme: ColorScheme) {
     var currentScreen by remember { mutableStateOf("startScreen") }
     var phoneNumber by remember { mutableStateOf("Initial phone") }
 
     when (currentScreen) {
-        "startScreen" -> StartScreen(
+        "startScreen" -> StartScreen(colorScheme,
             onNavigateToPhoneScreen = {currentScreen = "phoneScreen"}
         )
         "phoneScreen" -> PhoneScreen(

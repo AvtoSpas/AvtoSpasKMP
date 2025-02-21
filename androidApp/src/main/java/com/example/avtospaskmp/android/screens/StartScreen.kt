@@ -22,9 +22,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.avtospaskmp.android.R
+import com.example.avtospaskmp.android.screens.theme.ColorScheme
 
 @Composable
-fun StartScreen(onNavigateToPhoneScreen: () -> Unit) {
+fun StartScreen(colorShceme : ColorScheme,
+    onNavigateToPhoneScreen: () -> Unit) {
     Column {
         Row(
             modifier = Modifier
@@ -35,7 +37,7 @@ fun StartScreen(onNavigateToPhoneScreen: () -> Unit) {
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = Color.Black,
+                color = colorShceme.defDarkWhite,
                 fontSize = 60.sp,
                 fontWeight = FontWeight.Bold
 
@@ -44,7 +46,7 @@ fun StartScreen(onNavigateToPhoneScreen: () -> Unit) {
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = Color(0xffE53B19),
+                color = colorShceme.orangeColor,
                 fontSize = 60.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -72,23 +74,24 @@ fun StartScreen(onNavigateToPhoneScreen: () -> Unit) {
                         .height(60.dp)
                         .padding(horizontal = 40.dp),
                     shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(3.dp, color = Color(0xffE53B19)),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
+                    border = BorderStroke(3.dp, color = colorShceme.orangeColor),
+                    colors = ButtonDefaults.buttonColors(containerColor = colorShceme.orangeColor),
                     onClick = onNavigateToPhoneScreen
                 ) { Text(text="Регистрация",
-                    fontSize = 16.sp) }
+                    fontSize = 16.sp,
+                    color = colorShceme.white) }
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(60.dp)
                         .padding(horizontal = 40.dp),
                     shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(3.dp, color = Color(0xffE8E7E7)),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xffffff)),
+                    border = BorderStroke(3.dp, color = colorShceme.grayButtonBorder),
+                    colors = ButtonDefaults.buttonColors(containerColor = colorShceme.grayButton),
                     onClick = { }
                 ) { Text(
                     text="Вход",
-                    color = Color(0xffE53B19),
+                    color = colorShceme.defOrangeWhite,
                     fontSize = 16.sp)  }
 
             }
