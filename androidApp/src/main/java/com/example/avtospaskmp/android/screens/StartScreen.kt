@@ -37,8 +37,6 @@ fun StartScreen(onNavigateToPhoneScreen: () -> Unit) {
                 textAlign = TextAlign.Center,
                 color = Color.Black,
                 fontSize = 60.sp,
-                modifier = Modifier
-                    .padding(0.dp),
                 fontWeight = FontWeight.Bold
 
             )
@@ -48,8 +46,6 @@ fun StartScreen(onNavigateToPhoneScreen: () -> Unit) {
                 textAlign = TextAlign.Center,
                 color = Color(0xffE53B19),
                 fontSize = 60.sp,
-                modifier = Modifier
-                    .padding(0.dp),
                 fontWeight = FontWeight.Bold
             )
         }
