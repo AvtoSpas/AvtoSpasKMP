@@ -37,11 +37,14 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.avtospaskmp.android.screens.theme.ColorScheme
 
 @Composable
-fun CodeScreen(phoneNumber:String,
-               onNavigateToPhoneScreen: () -> Unit,
-               onNavigateToFirstRegScreen:()->Unit
+fun CodeScreen(
+    colorScheme: ColorScheme,
+    phoneNumber:String,
+    onNavigateToPhoneScreen: () -> Unit,
+    onNavigateToFirstRegScreen:()->Unit
 ) {
     var code by remember { mutableStateOf(TextFieldValue(""))}
     Column {
@@ -70,7 +73,7 @@ fun CodeScreen(phoneNumber:String,
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = Color.Black,
+                color = colorScheme.defDarkWhite,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -78,7 +81,7 @@ fun CodeScreen(phoneNumber:String,
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = Color(0xffE53B19),
+                color = colorScheme.orangeColor,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -109,6 +112,7 @@ fun CodeScreen(phoneNumber:String,
                         value = code,
                         textStyle = TextStyle(
                             fontSize = 20.sp,
+                            color = colorScheme.defDarkWhite,
                             textAlign = TextAlign.Center
                         ),
                         onValueChange = { newValue ->
@@ -124,7 +128,7 @@ fun CodeScreen(phoneNumber:String,
                             .height(50.dp)
                             .fillMaxWidth()
                             .padding(horizontal = 30.dp)
-                            .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(14.dp)),
+                            .border(2.dp, colorScheme.grayButtonBorder, RoundedCornerShape(14.dp)),
                         decorationBox = { innerTextField ->
                             Box(
                                 contentAlignment = Alignment.Center,
@@ -135,7 +139,7 @@ fun CodeScreen(phoneNumber:String,
                                 if (code.text.isEmpty())
                                     Text(
                                         text = "___-___",
-                                        color = Color(0xffE8E7E7)
+                                        color = colorScheme.grayButtonBorder
                                     )
                                 innerTextField()
                             }
@@ -151,23 +155,32 @@ fun CodeScreen(phoneNumber:String,
                                 .height(47.dp)
                                 .padding(horizontal = 30.dp),
                             shape = RoundedCornerShape(14.dp),
-                            border = BorderStroke(3.dp, color = Color(0xffE53B19)),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
+                            border = BorderStroke(3.dp, color = colorScheme.orangeColor),
+                            colors = ButtonDefaults.buttonColors(containerColor = colorScheme.orangeColor),
                             onClick = onNavigateToFirstRegScreen
-                        ) { Text(text="Далее",
-                            fontSize = 16.sp) }
+                        ) {
+                            Text(
+                                text="Далее",
+                                fontSize = 16.sp,
+                                color = colorScheme.white
+                            )
+                        }
                         Button(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(47.dp)
                                 .padding(horizontal = 30.dp),
                             shape = RoundedCornerShape(14.dp),
-                            border = BorderStroke(3.dp, color = Color(0xffE8E7E7)),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xffffffff)),
+                            border = BorderStroke(3.dp, color = colorScheme.grayButtonBorder),
+                            colors = ButtonDefaults.buttonColors(containerColor = colorScheme.grayButton),
                             onClick = { }
-                        ) { Text(text="Отправить код еще раз",
-                            color = Color(0xffE53B19),
-                            fontSize = 16.sp) }
+                        ) {
+                            Text(
+                                text="Отправить код еще раз",
+                                color = colorScheme.defDarkWhite,
+                                fontSize = 16.sp
+                            )
+                        }
                     }
                 }
             }

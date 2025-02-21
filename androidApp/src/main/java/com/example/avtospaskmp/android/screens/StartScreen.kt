@@ -25,7 +25,8 @@ import com.example.avtospaskmp.android.R
 import com.example.avtospaskmp.android.screens.theme.ColorScheme
 
 @Composable
-fun StartScreen(colorShceme : ColorScheme,
+fun StartScreen(
+    colorScheme : ColorScheme,
     onNavigateToPhoneScreen: () -> Unit) {
     Column {
         Row(
@@ -37,7 +38,7 @@ fun StartScreen(colorShceme : ColorScheme,
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = colorShceme.defDarkWhite,
+                color = colorScheme.defDarkWhite,
                 fontSize = 60.sp,
                 fontWeight = FontWeight.Bold
 
@@ -46,7 +47,7 @@ fun StartScreen(colorShceme : ColorScheme,
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = colorShceme.orangeColor,
+                color = colorScheme.orangeColor,
                 fontSize = 60.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -74,24 +75,24 @@ fun StartScreen(colorShceme : ColorScheme,
                         .height(60.dp)
                         .padding(horizontal = 40.dp),
                     shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(3.dp, color = colorShceme.orangeColor),
-                    colors = ButtonDefaults.buttonColors(containerColor = colorShceme.orangeColor),
+                    border = BorderStroke(3.dp, color = colorScheme.orangeColor),
+                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.orangeColor),
                     onClick = onNavigateToPhoneScreen
                 ) { Text(text="Регистрация",
                     fontSize = 16.sp,
-                    color = colorShceme.white) }
+                    color = colorScheme.white) }
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(60.dp)
                         .padding(horizontal = 40.dp),
                     shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(3.dp, color = colorShceme.grayButtonBorder),
-                    colors = ButtonDefaults.buttonColors(containerColor = colorShceme.grayButton),
+                    border = BorderStroke(3.dp, color = colorScheme.grayButtonBorder),
+                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.grayButton),
                     onClick = { }
                 ) { Text(
                     text="Вход",
-                    color = colorShceme.defOrangeWhite,
+                    color = colorScheme.defOrangeWhite,
                     fontSize = 16.sp)  }
 
             }

@@ -1,5 +1,7 @@
 package com.example.avtospaskmp.android
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.view.View
@@ -42,8 +44,10 @@ import com.example.avtospaskmp.android.screens.theme.OnDarkColorScheme
 import com.example.avtospaskmp.android.screens.theme.OnLightColorScheme
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContent {
             MyApplicationTheme {
                 Surface(

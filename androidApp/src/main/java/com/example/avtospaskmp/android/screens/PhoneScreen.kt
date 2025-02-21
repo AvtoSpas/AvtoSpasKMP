@@ -3,6 +3,7 @@ package com.example.avtospaskmp.android.screens
 import android.graphics.drawable.Icon
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -42,9 +43,11 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import com.example.avtospaskmp.android.screens.theme.ColorScheme
 
 @Composable
 fun PhoneScreen(
+    colorScheme: ColorScheme,
     onNavigateToStartScreen: ()-> Unit,
     onNavigateToCodeScreen: (String)-> Unit
 ) {
@@ -76,7 +79,7 @@ fun PhoneScreen(
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = Color.Black,
+                color = colorScheme.defDarkWhite,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
 
@@ -85,7 +88,7 @@ fun PhoneScreen(
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = Color(0xffE53B19),
+                color = colorScheme.orangeColor,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -116,7 +119,8 @@ fun PhoneScreen(
                         }
                     },
                     textStyle = TextStyle(
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        color = colorScheme.defDarkWhite
                     ),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         keyboardType = KeyboardType.Phone
@@ -125,7 +129,7 @@ fun PhoneScreen(
                         .height(50.dp)
                         .fillMaxWidth()
                         .padding(horizontal = 30.dp)
-                        .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(14.dp)),
+                        .border(2.dp, colorScheme.grayButtonBorder, RoundedCornerShape(14.dp)),
                     decorationBox = { innerTextField ->
                         Box(
                             modifier = Modifier
@@ -135,7 +139,7 @@ fun PhoneScreen(
                             if (phoneNumber.text.isEmpty())
                                 Text(
                                     text = "+7 (000) 000-00-00",
-                                    color = Color(0xffE8E7E7)
+                                    color = colorScheme.grayButtonBorder
                                 )
                             innerTextField() // Отображаем поле ввода
                         }
@@ -147,11 +151,15 @@ fun PhoneScreen(
                         .height(47.dp)
                         .padding(horizontal = 30.dp),
                     shape = RoundedCornerShape(14.dp),
-                    border = BorderStroke(3.dp, color = Color(0xffE53B19)),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
+                    border = BorderStroke(3.dp, color = colorScheme.orangeColor),
+                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.orangeColor),
                     onClick = { onNavigateToCodeScreen(phoneNumber.text) }
-                ) { Text(text="Далее",
-                    fontSize = 16.sp)
+                ) {
+                    Text(
+                        text="Далее",
+                        color = colorScheme.white,
+                        fontSize = 16.sp
+                    )
                 }
             }
         }

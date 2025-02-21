@@ -21,7 +21,7 @@ fun App(colorScheme: ColorScheme) {
         "startScreen" -> StartScreen(colorScheme,
             onNavigateToPhoneScreen = {currentScreen = "phoneScreen"}
         )
-        "phoneScreen" -> PhoneScreen(
+        "phoneScreen" -> PhoneScreen( colorScheme,
             onNavigateToStartScreen = {
 
                 currentScreen = "startScreen"},
@@ -30,12 +30,12 @@ fun App(colorScheme: ColorScheme) {
                 currentScreen = "codeScreen"
             }
         )
-        "codeScreen" -> CodeScreen(
+        "codeScreen" -> CodeScreen(colorScheme,
             phoneNumber = phoneNumber,
             onNavigateToPhoneScreen = {currentScreen = "phoneScreen"},
             onNavigateToFirstRegScreen = {currentScreen = "firstRegScreen"}
         )
-        "firstRegScreen" -> FirstRegScreen(
+        "firstRegScreen" -> FirstRegScreen(colorScheme,
             onNavigateToCodeScreen = {currentScreen = "codeScreen"}
         )
 

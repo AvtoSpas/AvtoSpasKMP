@@ -35,9 +35,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.avtospaskmp.android.screens.theme.ColorScheme
 
 @Composable
-fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
+fun FirstRegScreen(
+    colorScheme: ColorScheme,
+    onNavigateToCodeScreen: () -> Unit
+) {
     var surname by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
     Column {
@@ -66,7 +70,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = Color.Black,
+                color = colorScheme.defDarkWhite,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
 
@@ -75,7 +79,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = Color(0xffE53B19),
+                color = colorScheme.orangeColor,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -110,6 +114,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                             value = surname,
                             textStyle = TextStyle(
                                 fontSize = 20.sp,
+                                color = colorScheme.defDarkWhite,
                                 textAlign = TextAlign.Center
                             ),
                             onValueChange = {
@@ -120,7 +125,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                                 .height(50.dp)
                                 .fillMaxWidth()
                                 .padding(horizontal = 30.dp)
-                                .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(14.dp)),
+                                .border(2.dp, colorScheme.grayButtonBorder, RoundedCornerShape(14.dp)),
                             decorationBox = { innerTextField ->
                                 Box(
                                     contentAlignment = Alignment.Center,
@@ -131,7 +136,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                                     if(surname.isEmpty())
                                         Text(
                                             text = "Иван",
-                                            color = Color(0xffE8E7E7)
+                                            color = colorScheme.grayButtonBorder
                                         )
                                     innerTextField() // Помещаем реальное поле ввода сюда
                                 }
@@ -141,6 +146,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                             value = name,
                             textStyle = TextStyle(
                                 fontSize = 20.sp,
+                                color = colorScheme.defDarkWhite,
                                 textAlign = TextAlign.Center
                             ),
                             onValueChange = {
@@ -151,7 +157,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                                 .height(50.dp)
                                 .fillMaxWidth()
                                 .padding(horizontal = 30.dp)
-                                .border(2.dp, Color(0xffE8E7E7), RoundedCornerShape(14.dp)),
+                                .border(2.dp, colorScheme.grayButtonBorder, RoundedCornerShape(14.dp)),
                             decorationBox = { innerTextField ->
                                 Box(
                                     contentAlignment = Alignment.Center,
@@ -162,7 +168,7 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                                     if(name.isEmpty())
                                         Text(
                                             text = "Иванов",
-                                            color = Color(0xffE8E7E7)
+                                            color = colorScheme.grayButtonBorder
                                         )
                                     innerTextField() // Помещаем реальное поле ввода сюда
                                 }
@@ -176,11 +182,16 @@ fun FirstRegScreen(onNavigateToCodeScreen: () -> Unit){
                             .height(47.dp)
                             .padding(horizontal = 30.dp),
                         shape = RoundedCornerShape(14.dp),
-                        border = BorderStroke(3.dp, color = Color(0xffE53B19)),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xffE53B19)),
+                        border = BorderStroke(3.dp, color = colorScheme.orangeColor),
+                        colors = ButtonDefaults.buttonColors(containerColor = colorScheme.orangeColor),
                         onClick = {  }
-                    ) { Text(text="Завершить регистрацию",
-                        fontSize = 16.sp) }
+                    ) {
+                        Text(
+                            text="Завершить регистрацию",
+                            color = colorScheme.white,
+                            fontSize = 16.sp
+                        )
+                    }
 
                 }
             }
