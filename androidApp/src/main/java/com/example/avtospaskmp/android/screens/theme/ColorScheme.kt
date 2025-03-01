@@ -1,7 +1,5 @@
 package com.example.avtospaskmp.android.screens.theme
 
-import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 
