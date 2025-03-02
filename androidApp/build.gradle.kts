@@ -6,10 +6,10 @@ plugins {
 }
 
 android {
-    namespace = "com.example.avtospaskmp.android"
+    namespace = "ru.avtospas.android"
     compileSdk = 35
     defaultConfig {
-        applicationId = "com.example.avtospaskmp.android"
+        applicationId = "ru.avtospas.android"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

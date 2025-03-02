@@ -1,4 +1,4 @@
-package com.example.avtospaskmp.android.ui
+package ru.avtospas.android.ui
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color

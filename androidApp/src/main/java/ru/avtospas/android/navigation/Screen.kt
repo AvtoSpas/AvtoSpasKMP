@@ -1,4 +1,4 @@
-package com.example.avtospaskmp.android.navigation
+package ru.avtospas.android.navigation
 
 import kotlinx.serialization.Serializable
 

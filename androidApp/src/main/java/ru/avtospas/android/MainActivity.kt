@@ -1,4 +1,4 @@
-package com.example.avtospaskmp.android
+package ru.avtospas.android
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
@@ -11,8 +11,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.example.avtospaskmp.android.navigation.NavigationGraph
-import com.example.avtospaskmp.android.ui.AvtoSpasTheme
+import ru.avtospas.android.navigation.NavigationGraph
+import ru.avtospas.android.ui.AvtoSpasTheme
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("SourceLockedOrientationActivity")

@@ -1,14 +1,14 @@
-package com.example.avtospaskmp.android.navigation
+package ru.avtospas.android.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import com.example.avtospaskmp.android.screens.CodeScreen
-import com.example.avtospaskmp.android.screens.FirstRegScreen
-import com.example.avtospaskmp.android.screens.PhoneScreen
-import com.example.avtospaskmp.android.screens.StartScreen
+import ru.avtospas.android.screens.CodeScreen
+import ru.avtospas.android.screens.FirstRegScreen
+import ru.avtospas.android.screens.PhoneScreen
+import ru.avtospas.android.screens.StartScreen
 
 @Composable
 fun NavigationGraph(

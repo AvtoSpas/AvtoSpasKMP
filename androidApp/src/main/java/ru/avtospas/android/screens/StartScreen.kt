@@ -1,4 +1,4 @@
-package com.example.avtospaskmp.android.screens
+package ru.avtospas.android.screens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -20,9 +20,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.avtospaskmp.android.R
-import com.example.avtospaskmp.android.ui.AvtoSpasTheme
-
+import ru.avtospas.android.R
+import ru.avtospas.android.ui.AvtoSpasTheme
 @Composable
 fun StartScreen(
     onNavigateToPhoneScreen: () -> Unit
