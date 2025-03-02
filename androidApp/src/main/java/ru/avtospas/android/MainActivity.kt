@@ -12,7 +12,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import ru.avtospas.android.navigation.NavigationGraph
-import ru.avtospas.android.ui.AvtoSpasTheme
+import ru.avtospas.core_ui.theme.AvtoSpasTheme
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("SourceLockedOrientationActivity")

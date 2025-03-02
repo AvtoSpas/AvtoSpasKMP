@@ -5,10 +5,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import ru.avtospas.android.screens.CodeScreen
-import ru.avtospas.android.screens.FirstRegScreen
-import ru.avtospas.android.screens.PhoneScreen
-import ru.avtospas.android.screens.StartScreen
 
 @Composable
 fun NavigationGraph(
@@ -19,7 +15,7 @@ fun NavigationGraph(
         startDestination = Screen.StartScreen
     ) {
         composable<Screen.StartScreen> {
-            StartScreen(
+            ru.avtospas.feature.login.presentation.StartScreen(
                 onNavigateToPhoneScreen = {
                     navController.navigate(Screen.PhoneScreen)
                 }
@@ -32,7 +28,7 @@ fun NavigationGraph(
         // for each of the screens or reusing the same one which we
         // would need to receive from some di scope
         composable<Screen.PhoneScreen> {
-            PhoneScreen(
+            ru.avtospas.feature.login.presentation.PhoneScreen(
                 onNavigateToCodeScreen = { wtf ->
                     navController.navigate(Screen.CodeScreen(wtf))
                 },
@@ -46,7 +42,7 @@ fun NavigationGraph(
 
         composable<Screen.CodeScreen> { backStackEntry ->
             val code = backStackEntry.toRoute<Screen.CodeScreen>()
-            CodeScreen(
+            ru.avtospas.feature.login.presentation.CodeScreen(
                 phoneNumber = code.phoneNumberFrom,
                 onNavigateToPhoneScreen = {
                     navController.navigate(Screen.PhoneScreen) {
@@ -60,7 +56,7 @@ fun NavigationGraph(
         }
 
         composable<Screen.FirstRegScreen> {
-            FirstRegScreen(
+            ru.avtospas.feature.login.presentation.FirstRegScreen(
                 // What's the point in navigating back to code screen?
                 // We need to navigate back to phone number screen with
                 // saved state (which not possible with current implementation)

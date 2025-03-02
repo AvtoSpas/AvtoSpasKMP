@@ -1,4 +1,4 @@
-package ru.avtospas.android.screens
+package ru.avtospas.feature.login.presentation
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
@@ -36,7 +36,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.avtospas.android.ui.AvtoSpasTheme
+import ru.avtospas.core_ui.theme.AvtoSpasTheme
 
 @Composable
 fun CodeScreen(

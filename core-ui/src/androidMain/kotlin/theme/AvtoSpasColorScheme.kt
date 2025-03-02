@@ -1,4 +1,4 @@
-package ru.avtospas.android.ui
+package ru.avtospas.core_ui.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color

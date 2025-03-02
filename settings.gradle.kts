@@ -17,3 +17,13 @@ dependencyResolutionManagement {
 rootProject.name = "AvtoSpasKMP"
 include(":androidApp")
 include(":shared")
+include(":core-ui")
+
+include(
+    ":features:login",
+    ":features:edit-profile",
+    ":features:main",
+    ":features:orders",
+    ":features:settings",
+    ":features:support",
+)

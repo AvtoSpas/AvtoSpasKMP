@@ -1,4 +1,4 @@
-package ru.avtospas.android.screens
+package ru.avtospas.feature.login.presentation
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -15,13 +15,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.avtospas.android.R
-import ru.avtospas.android.ui.AvtoSpasTheme
+import dev.icerock.moko.resources.compose.painterResource
+import ru.avtospas.core_ui.theme.AvtoSpasTheme
+import ru.avtospas.feature.login.MR
+
 @Composable
 fun StartScreen(
     onNavigateToPhoneScreen: () -> Unit
@@ -51,7 +52,7 @@ fun StartScreen(
             )
         }
         Image(
-            painter = painterResource(R.drawable.truck),
+            painter = painterResource(MR.images.truck),
             contentDescription = "Orange Truck",
             alignment = Alignment.CenterEnd,
             modifier = Modifier
