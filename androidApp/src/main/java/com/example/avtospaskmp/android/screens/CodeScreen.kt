@@ -28,7 +28,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -37,23 +36,22 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.avtospaskmp.android.screens.theme.ColorScheme
+import com.example.avtospaskmp.android.ui.AvtoSpasTheme
 
 @Composable
 fun CodeScreen(
-    colorScheme: ColorScheme,
-    phoneNumber:String,
+    phoneNumber: String,
     onNavigateToPhoneScreen: () -> Unit,
-    onNavigateToFirstRegScreen:()->Unit
+    onNavigateToFirstRegScreen: () -> Unit
 ) {
-    var code by remember { mutableStateOf(TextFieldValue(""))}
+    var code by remember { mutableStateOf(TextFieldValue("")) }
     Column {
-        Row (
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(15.dp, top = 60.dp)
         ) {
-            IconButton (
+            IconButton(
                 onClick = onNavigateToPhoneScreen,
                 Modifier.size(45.dp)
             ) {
@@ -73,7 +71,7 @@ fun CodeScreen(
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = colorScheme.defDarkWhite,
+                color = AvtoSpasTheme.colorScheme.defDarkWhite,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -81,7 +79,7 @@ fun CodeScreen(
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = colorScheme.orangeColor,
+                color = AvtoSpasTheme.colorScheme.orangeColor,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -104,15 +102,15 @@ fun CodeScreen(
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.fillMaxWidth()
                 )
-                Column (
+                Column(
                     modifier = Modifier.fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(40.dp)
-                ){
+                ) {
                     BasicTextField(
                         value = code,
                         textStyle = TextStyle(
                             fontSize = 20.sp,
-                            color = colorScheme.defDarkWhite,
+                            color = AvtoSpasTheme.colorScheme.defDarkWhite,
                             textAlign = TextAlign.Center
                         ),
                         onValueChange = { newValue ->
@@ -128,7 +126,11 @@ fun CodeScreen(
                             .height(50.dp)
                             .fillMaxWidth()
                             .padding(horizontal = 30.dp)
-                            .border(2.dp, colorScheme.grayButtonBorder, RoundedCornerShape(14.dp)),
+                            .border(
+                                2.dp,
+                                AvtoSpasTheme.colorScheme.grayButtonBorder,
+                                RoundedCornerShape(14.dp)
+                            ),
                         decorationBox = { innerTextField ->
                             Box(
                                 contentAlignment = Alignment.Center,
@@ -139,7 +141,7 @@ fun CodeScreen(
                                 if (code.text.isEmpty())
                                     Text(
                                         text = "___-___",
-                                        color = colorScheme.grayButtonBorder
+                                        color = AvtoSpasTheme.colorScheme.grayButtonBorder
                                     )
                                 innerTextField()
                             }
@@ -155,14 +157,17 @@ fun CodeScreen(
                                 .height(47.dp)
                                 .padding(horizontal = 30.dp),
                             shape = RoundedCornerShape(14.dp),
-                            border = BorderStroke(3.dp, color = colorScheme.orangeColor),
-                            colors = ButtonDefaults.buttonColors(containerColor = colorScheme.orangeColor),
+                            border = BorderStroke(
+                                3.dp,
+                                color = AvtoSpasTheme.colorScheme.orangeColor
+                            ),
+                            colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.orangeColor),
                             onClick = onNavigateToFirstRegScreen
                         ) {
                             Text(
-                                text="Далее",
+                                text = "Далее",
                                 fontSize = 16.sp,
-                                color = colorScheme.white
+                                color = AvtoSpasTheme.colorScheme.white
                             )
                         }
                         Button(
@@ -171,13 +176,16 @@ fun CodeScreen(
                                 .height(47.dp)
                                 .padding(horizontal = 30.dp),
                             shape = RoundedCornerShape(14.dp),
-                            border = BorderStroke(3.dp, color = colorScheme.grayButtonBorder),
-                            colors = ButtonDefaults.buttonColors(containerColor = colorScheme.grayButton),
+                            border = BorderStroke(
+                                3.dp,
+                                color = AvtoSpasTheme.colorScheme.grayButtonBorder
+                            ),
+                            colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.grayButton),
                             onClick = { }
                         ) {
                             Text(
-                                text="Отправить код еще раз",
-                                color = colorScheme.defDarkWhite,
+                                text = "Отправить код еще раз",
+                                color = AvtoSpasTheme.colorScheme.defDarkWhite,
                                 fontSize = 16.sp
                             )
                         }

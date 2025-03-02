@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Button
@@ -28,29 +27,26 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.avtospaskmp.android.screens.theme.ColorScheme
+import com.example.avtospaskmp.android.ui.AvtoSpasTheme
 
 @Composable
 fun FirstRegScreen(
-    colorScheme: ColorScheme,
     onNavigateToCodeScreen: () -> Unit
 ) {
     var surname by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
     Column {
-        Row (
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(15.dp, top = 60.dp)
         ) {
-            IconButton (
+            IconButton(
                 onClick = onNavigateToCodeScreen,
                 Modifier.size(45.dp)
             ) {
@@ -70,7 +66,7 @@ fun FirstRegScreen(
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = colorScheme.defDarkWhite,
+                color = AvtoSpasTheme.colorScheme.defDarkWhite,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
 
@@ -79,7 +75,7 @@ fun FirstRegScreen(
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = colorScheme.orangeColor,
+                color = AvtoSpasTheme.colorScheme.orangeColor,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -102,7 +98,7 @@ fun FirstRegScreen(
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.fillMaxWidth()
                 )
-                Column (
+                Column(
                     modifier = Modifier.fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(30.dp)
                 ) {
@@ -114,7 +110,7 @@ fun FirstRegScreen(
                             value = surname,
                             textStyle = TextStyle(
                                 fontSize = 20.sp,
-                                color = colorScheme.defDarkWhite,
+                                color = AvtoSpasTheme.colorScheme.defDarkWhite,
                                 textAlign = TextAlign.Center
                             ),
                             onValueChange = {
@@ -125,7 +121,11 @@ fun FirstRegScreen(
                                 .height(50.dp)
                                 .fillMaxWidth()
                                 .padding(horizontal = 30.dp)
-                                .border(2.dp, colorScheme.grayButtonBorder, RoundedCornerShape(14.dp)),
+                                .border(
+                                    2.dp,
+                                    AvtoSpasTheme.colorScheme.grayButtonBorder,
+                                    RoundedCornerShape(14.dp)
+                                ),
                             decorationBox = { innerTextField ->
                                 Box(
                                     contentAlignment = Alignment.Center,
@@ -133,10 +133,10 @@ fun FirstRegScreen(
                                         .fillMaxWidth()
                                         .padding(vertical = 10.dp)
                                 ) {
-                                    if(surname.isEmpty())
+                                    if (surname.isEmpty())
                                         Text(
                                             text = "Иван",
-                                            color = colorScheme.grayButtonBorder
+                                            color = AvtoSpasTheme.colorScheme.grayButtonBorder
                                         )
                                     innerTextField() // Помещаем реальное поле ввода сюда
                                 }
@@ -146,7 +146,7 @@ fun FirstRegScreen(
                             value = name,
                             textStyle = TextStyle(
                                 fontSize = 20.sp,
-                                color = colorScheme.defDarkWhite,
+                                color = AvtoSpasTheme.colorScheme.defDarkWhite,
                                 textAlign = TextAlign.Center
                             ),
                             onValueChange = {
@@ -157,7 +157,11 @@ fun FirstRegScreen(
                                 .height(50.dp)
                                 .fillMaxWidth()
                                 .padding(horizontal = 30.dp)
-                                .border(2.dp, colorScheme.grayButtonBorder, RoundedCornerShape(14.dp)),
+                                .border(
+                                    2.dp,
+                                    AvtoSpasTheme.colorScheme.grayButtonBorder,
+                                    RoundedCornerShape(14.dp)
+                                ),
                             decorationBox = { innerTextField ->
                                 Box(
                                     contentAlignment = Alignment.Center,
@@ -165,10 +169,10 @@ fun FirstRegScreen(
                                         .fillMaxWidth()
                                         .padding(vertical = 10.dp)
                                 ) {
-                                    if(name.isEmpty())
+                                    if (name.isEmpty())
                                         Text(
                                             text = "Иванов",
-                                            color = colorScheme.grayButtonBorder
+                                            color = AvtoSpasTheme.colorScheme.grayButtonBorder
                                         )
                                     innerTextField() // Помещаем реальное поле ввода сюда
                                 }
@@ -182,13 +186,13 @@ fun FirstRegScreen(
                             .height(47.dp)
                             .padding(horizontal = 30.dp),
                         shape = RoundedCornerShape(14.dp),
-                        border = BorderStroke(3.dp, color = colorScheme.orangeColor),
-                        colors = ButtonDefaults.buttonColors(containerColor = colorScheme.orangeColor),
-                        onClick = {  }
+                        border = BorderStroke(3.dp, color = AvtoSpasTheme.colorScheme.orangeColor),
+                        colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.orangeColor),
+                        onClick = { }
                     ) {
                         Text(
-                            text="Завершить регистрацию",
-                            color = colorScheme.white,
+                            text = "Завершить регистрацию",
+                            color = AvtoSpasTheme.colorScheme.white,
                             fontSize = 16.sp
                         )
                     }

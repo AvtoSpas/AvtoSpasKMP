@@ -15,19 +15,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.avtospaskmp.android.R
-import com.example.avtospaskmp.android.screens.theme.ColorScheme
+import com.example.avtospaskmp.android.ui.AvtoSpasTheme
 
 @Composable
 fun StartScreen(
-    colorScheme : ColorScheme,
-    onNavigateToPhoneScreen: () -> Unit) {
+    onNavigateToPhoneScreen: () -> Unit
+) {
     Column {
         Row(
             modifier = Modifier
@@ -38,7 +37,7 @@ fun StartScreen(
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = colorScheme.defDarkWhite,
+                color = AvtoSpasTheme.colorScheme.defDarkWhite,
                 fontSize = 60.sp,
                 fontWeight = FontWeight.Bold
 
@@ -47,7 +46,7 @@ fun StartScreen(
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = colorScheme.orangeColor,
+                color = AvtoSpasTheme.colorScheme.orangeColor,
                 fontSize = 60.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -60,6 +59,7 @@ fun StartScreen(
                 .fillMaxWidth()
                 .height(350.dp)
         )
+
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth()
@@ -75,25 +75,33 @@ fun StartScreen(
                         .height(60.dp)
                         .padding(horizontal = 40.dp),
                     shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(3.dp, color = colorScheme.orangeColor),
-                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.orangeColor),
+                    border = BorderStroke(3.dp, color = AvtoSpasTheme.colorScheme.orangeColor),
+                    colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.orangeColor),
                     onClick = onNavigateToPhoneScreen
-                ) { Text(text="Регистрация",
-                    fontSize = 16.sp,
-                    color = colorScheme.white) }
+                ) {
+                    Text(
+                        text = "Регистрация",
+                        fontSize = 16.sp,
+                        color = AvtoSpasTheme.colorScheme.white
+                    )
+                }
+
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(60.dp)
                         .padding(horizontal = 40.dp),
                     shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(3.dp, color = colorScheme.grayButtonBorder),
-                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.grayButton),
+                    border = BorderStroke(3.dp, color = AvtoSpasTheme.colorScheme.grayButtonBorder),
+                    colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.grayButton),
                     onClick = { }
-                ) { Text(
-                    text="Вход",
-                    color = colorScheme.defOrangeWhite,
-                    fontSize = 16.sp)  }
+                ) {
+                    Text(
+                        text = "Вход",
+                        color = AvtoSpasTheme.colorScheme.defOrangeWhite,
+                        fontSize = 16.sp
+                    )
+                }
 
             }
         }

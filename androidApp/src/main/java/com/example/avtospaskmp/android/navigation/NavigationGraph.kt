@@ -9,12 +9,10 @@ import com.example.avtospaskmp.android.screens.CodeScreen
 import com.example.avtospaskmp.android.screens.FirstRegScreen
 import com.example.avtospaskmp.android.screens.PhoneScreen
 import com.example.avtospaskmp.android.screens.StartScreen
-import com.example.avtospaskmp.android.screens.theme.ColorScheme
 
 @Composable
 fun NavigationGraph(
     navController: NavHostController,
-    colorScheme: ColorScheme
 ) {
     NavHost(
         navController = navController,
@@ -22,7 +20,6 @@ fun NavigationGraph(
     ) {
         composable<Screen.StartScreen> {
             StartScreen(
-                colorScheme,
                 onNavigateToPhoneScreen = {
                     navController.navigate(Screen.PhoneScreen)
                 }
@@ -36,7 +33,6 @@ fun NavigationGraph(
         // would need to receive from some di scope
         composable<Screen.PhoneScreen> {
             PhoneScreen(
-                colorScheme = colorScheme,
                 onNavigateToCodeScreen = { wtf ->
                     navController.navigate(Screen.CodeScreen(wtf))
                 },
@@ -51,7 +47,6 @@ fun NavigationGraph(
         composable<Screen.CodeScreen> { backStackEntry ->
             val code = backStackEntry.toRoute<Screen.CodeScreen>()
             CodeScreen(
-                colorScheme,
                 phoneNumber = code.phoneNumberFrom,
                 onNavigateToPhoneScreen = {
                     navController.navigate(Screen.PhoneScreen) {
@@ -66,7 +61,6 @@ fun NavigationGraph(
 
         composable<Screen.FirstRegScreen> {
             FirstRegScreen(
-                colorScheme,
                 // What's the point in navigating back to code screen?
                 // We need to navigate back to phone number screen with
                 // saved state (which not possible with current implementation)

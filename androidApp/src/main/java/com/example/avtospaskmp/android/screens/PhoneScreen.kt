@@ -1,9 +1,6 @@
 package com.example.avtospaskmp.android.screens
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,55 +11,49 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.IconButton
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.avtospaskmp.android.screens.theme.ColorScheme
+import com.example.avtospaskmp.android.ui.AvtoSpasTheme
 
 @Composable
 fun PhoneScreen(
-    colorScheme: ColorScheme,
-    onNavigateToStartScreen: ()-> Unit,
-    onNavigateToCodeScreen: (String)-> Unit
+    onNavigateToStartScreen: () -> Unit,
+    onNavigateToCodeScreen: (String) -> Unit
 ) {
     var phoneNumber by remember { mutableStateOf(TextFieldValue("+7")) }
 
     Column {
-        Row (
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(15.dp, top = 60.dp)
         ) {
-            IconButton (
+            IconButton(
                 onClick = onNavigateToStartScreen,
                 modifier = Modifier.size(45.dp)
-                ) {
+            ) {
                 Icon(
                     Icons.Filled.KeyboardArrowLeft,
                     contentDescription = "Кнопка назад",
@@ -79,7 +70,7 @@ fun PhoneScreen(
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = colorScheme.defDarkWhite,
+                color = AvtoSpasTheme.colorScheme.defDarkWhite,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
 
@@ -88,7 +79,7 @@ fun PhoneScreen(
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = colorScheme.orangeColor,
+                color = AvtoSpasTheme.colorScheme.orangeColor,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -98,7 +89,7 @@ fun PhoneScreen(
                 .fillMaxWidth()
                 .padding(top = 170.dp),
             horizontalArrangement = Arrangement.Center
-        ){
+        ) {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(15.dp)
@@ -120,7 +111,7 @@ fun PhoneScreen(
                     },
                     textStyle = TextStyle(
                         fontSize = 20.sp,
-                        color = colorScheme.defDarkWhite
+                        color = AvtoSpasTheme.colorScheme.defDarkWhite
                     ),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         keyboardType = KeyboardType.Phone
@@ -129,7 +120,11 @@ fun PhoneScreen(
                         .height(50.dp)
                         .fillMaxWidth()
                         .padding(horizontal = 30.dp)
-                        .border(2.dp, colorScheme.grayButtonBorder, RoundedCornerShape(14.dp)),
+                        .border(
+                            2.dp,
+                            AvtoSpasTheme.colorScheme.grayButtonBorder,
+                            RoundedCornerShape(14.dp)
+                        ),
                     decorationBox = { innerTextField ->
                         Box(
                             modifier = Modifier
@@ -139,7 +134,7 @@ fun PhoneScreen(
                             if (phoneNumber.text.isEmpty())
                                 Text(
                                     text = "+7 (000) 000-00-00",
-                                    color = colorScheme.grayButtonBorder
+                                    color = AvtoSpasTheme.colorScheme.grayButtonBorder
                                 )
                             innerTextField() // Отображаем поле ввода
                         }
@@ -151,13 +146,13 @@ fun PhoneScreen(
                         .height(47.dp)
                         .padding(horizontal = 30.dp),
                     shape = RoundedCornerShape(14.dp),
-                    border = BorderStroke(3.dp, color = colorScheme.orangeColor),
-                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.orangeColor),
+                    border = BorderStroke(3.dp, color = AvtoSpasTheme.colorScheme.orangeColor),
+                    colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.orangeColor),
                     onClick = { onNavigateToCodeScreen(phoneNumber.text) }
                 ) {
                     Text(
-                        text="Далее",
-                        color = colorScheme.white,
+                        text = "Далее",
+                        color = AvtoSpasTheme.colorScheme.white,
                         fontSize = 16.sp
                     )
                 }
@@ -167,6 +162,7 @@ fun PhoneScreen(
 
 
 }
+
 fun formatPhoneNumber(newValue: TextFieldValue): TextFieldValue {
     val cleanInput = newValue.text
         .replace("[^\\d]".toRegex(), "")
@@ -184,6 +180,7 @@ fun formatPhoneNumber(newValue: TextFieldValue): TextFieldValue {
                     append(cleanInput[index])
                     index++
                 }
+
                 else -> append(char)
             }
         }
