@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.skie)
 }
 
 kotlin {
@@ -59,5 +60,17 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+skie {
+    features {
+        enableFutureCombineExtensionPreview = true
+        enableFlowCombineConvertorPreview = true
+        enableSwiftUIObservingPreview = true
+    }
+
+    analytics {
+        enabled.set(false)
     }
 }

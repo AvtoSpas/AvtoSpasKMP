@@ -16,6 +16,7 @@ appcompat = "1.7.0"
 material = "1.12.0"
 material3Android = "1.3.1"
 resourcesCompose = "0.24.5"
+skie = "0.10.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -58,3 +59,4 @@ kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = 
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 mutliplatform-resources = { id = "dev.icerock.mobile.multiplatform-resources" }
+skie = { id = "co.touchlab.skie", version.ref = "skie" }
