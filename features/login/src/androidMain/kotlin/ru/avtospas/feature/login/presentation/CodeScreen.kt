@@ -1,6 +1,6 @@
 package ru.avtospas.feature.login.presentation
 
-import androidx.compose.foundation.BorderStroke
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,75 +15,63 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import components.AvtoSpasLogo
+import components.AvtoSpasRedButton
+import components.AvtoSpasWhiteButton
+import dev.icerock.moko.resources.compose.stringResource
 import ru.avtospas.core_ui.theme.AvtoSpasTheme
+import ru.avtospas.core_ui.transformations.OtpCodeVisualTransformation
+import ru.avtospas.feature.login.MR
 
 @Composable
 fun CodeScreen(
     phoneNumber: String,
-    onNavigateToPhoneScreen: () -> Unit,
-    onNavigateToFirstRegScreen: () -> Unit
+    otpCode: String,
+    modifier: Modifier = Modifier,
+    isContinueEnabled: Boolean,
+    onCodeChange: (String) -> Unit,
+    onContinueClick: () -> Unit,
+    onBack: () -> Unit
 ) {
-    var code by remember { mutableStateOf(TextFieldValue("")) }
-    Column {
+    Column(
+        modifier = modifier,
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(15.dp, top = 60.dp)
         ) {
             IconButton(
-                onClick = onNavigateToPhoneScreen,
-                Modifier.size(45.dp)
+                onClick = onContinueClick,
+                modifier = Modifier.size(45.dp)
             ) {
                 Icon(
-                    Icons.Filled.KeyboardArrowLeft,
+                    Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                     contentDescription = "Кнопка назад",
                     Modifier.fillMaxSize()
                 )
             }
         }
-        Row(
+
+        AvtoSpasLogo(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(60.dp, 15.dp),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = "Авто",
-                textAlign = TextAlign.Center,
-                color = AvtoSpasTheme.colorScheme.defDarkWhite,
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold
-            )
+        )
 
-            Text(
-                text = "Спас",
-                textAlign = TextAlign.Center,
-                color = AvtoSpasTheme.colorScheme.orangeColor,
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold
-            )
-        }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -96,7 +84,7 @@ fun CodeScreen(
                 verticalArrangement = Arrangement.spacedBy(15.dp)
             ) {
                 Text(
-                    text = "Код был отправлен на номер ${phoneNumber}",
+                    text = stringResource(MR.strings.code_was_sent_to, phoneNumber),
                     textAlign = TextAlign.Center,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
@@ -107,18 +95,14 @@ fun CodeScreen(
                     verticalArrangement = Arrangement.spacedBy(40.dp)
                 ) {
                     BasicTextField(
-                        value = code,
+                        value = otpCode,
                         textStyle = TextStyle(
                             fontSize = 20.sp,
                             color = AvtoSpasTheme.colorScheme.defDarkWhite,
                             textAlign = TextAlign.Center
                         ),
-                        onValueChange = { newValue ->
-                            if (newValue.text.length <= 7) {
-                                val formatted = formatCode(newValue)
-                                code = formatted
-                            }
-                        },
+                        visualTransformation = OtpCodeVisualTransformation(),
+                        onValueChange = onCodeChange,
                         keyboardOptions = KeyboardOptions.Default.copy(
                             keyboardType = KeyboardType.Number
                         ),
@@ -138,7 +122,7 @@ fun CodeScreen(
                                     .fillMaxWidth()
                                     .padding(vertical = 10.dp)
                             ) {
-                                if (code.text.isEmpty())
+                                if (otpCode.isEmpty())
                                     Text(
                                         text = "___-___",
                                         color = AvtoSpasTheme.colorScheme.grayButtonBorder
@@ -151,40 +135,30 @@ fun CodeScreen(
                         modifier = Modifier.fillMaxWidth(),
                         verticalArrangement = Arrangement.spacedBy(20.dp)
                     ) {
-                        Button(
+                        AvtoSpasRedButton(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(47.dp)
                                 .padding(horizontal = 30.dp),
-                            shape = RoundedCornerShape(14.dp),
-                            border = BorderStroke(
-                                3.dp,
-                                color = AvtoSpasTheme.colorScheme.orangeColor
-                            ),
-                            colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.orangeColor),
-                            onClick = onNavigateToFirstRegScreen
+                            enabled = isContinueEnabled,
+                            onClick = onBack
                         ) {
                             Text(
-                                text = "Далее",
+                                text = stringResource(MR.strings.next),
                                 fontSize = 16.sp,
                                 color = AvtoSpasTheme.colorScheme.white
                             )
                         }
-                        Button(
+
+                        AvtoSpasWhiteButton(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(47.dp)
                                 .padding(horizontal = 30.dp),
-                            shape = RoundedCornerShape(14.dp),
-                            border = BorderStroke(
-                                3.dp,
-                                color = AvtoSpasTheme.colorScheme.grayButtonBorder
-                            ),
-                            colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.grayButton),
                             onClick = { }
                         ) {
                             Text(
-                                text = "Отправить код еще раз",
+                                text = stringResource(MR.strings.send_code_again),
                                 color = AvtoSpasTheme.colorScheme.defDarkWhite,
                                 fontSize = 16.sp
                             )
@@ -193,39 +167,9 @@ fun CodeScreen(
                 }
             }
         }
-    }
-}
 
-fun formatCode(newValue: TextFieldValue): TextFieldValue {
-    val cleanCode = newValue.text.replace("[^\\d]".toRegex(), "")
-    val formatted = buildString {
-        for (i in cleanCode.indices) {
-            if (i == 3) append("-")
-            append(cleanCode[i])
+        BackHandler {
+            onBack()
         }
-    }.take(7)
-
-    val newCursorPosition = calculateCodeCursorPosition(
-        oldText = newValue.text,
-        newText = formatted,
-        oldCursorPosition = newValue.selection.start
-    )
-
-    return TextFieldValue(
-        text = formatted,
-        selection = TextRange(newCursorPosition)
-    )
-}
-
-fun calculateCodeCursorPosition(oldText: String, newText: String, oldCursorPosition: Int): Int {
-    if (oldCursorPosition > oldText.length) return newText.length
-
-    val isAdding = newText.length > oldText.length
-    val wasDashAdded = newText.count { it == '-' } > oldText.count { it == '-' }
-
-    return when {
-        isAdding && wasDashAdded -> oldCursorPosition + 1
-        !isAdding && wasDashAdded -> oldCursorPosition - 1
-        else -> oldCursorPosition
-    }.coerceIn(0, newText.length)
+    }
 }

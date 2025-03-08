@@ -5,14 +5,18 @@ import kotlinx.serialization.Serializable
 
 sealed class Screen {
     @Serializable
-    object StartScreen : Screen()
+    data object StartScreen : Screen()
 
     @Serializable
-    object PhoneScreen : Screen()
+    data object SignUpScreen : Screen()
 
-    @Serializable
-    data class CodeScreen(val phoneNumberFrom: String) : Screen()
+//    @Serializable
+//    object PhoneScreen : Screen()
+//
+//    @Serializable
+//    data class CodeScreen(val phoneNumberFrom: String) : Screen()
+//
+//    @Serializable
+//    object FirstRegScreen : Screen()
 
-    @Serializable
-    object FirstRegScreen : Screen()
 }

@@ -18,12 +18,13 @@ kotlin {
         }
     }
 
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
     sourceSets {
         androidMain.dependencies {
             implementation(projects.coreUi)
-
-            implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
 
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
@@ -39,6 +40,8 @@ kotlin {
 
             //put your multiplatform dependencies here
             api(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
 
             api(libs.androidx.lifecycle.viewmodel)
         }

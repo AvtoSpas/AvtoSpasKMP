@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-    <string name="my_string">My default localization string</string>
+    <string name="registration">Регистрация</string>
+    <string name="sign_in">Вход</string>
+    <string name="enter_phone_number">Введите номер телефона</string>
+    <string name="next">Далее</string>
+    <string name="code_was_sent_to">Код был отправлен на номер %s</string>
+    <string name="send_code_again">Отправить код еще раз</string>
+    <string name="enter_personal_information">Введите данные о себе</string>
+    <string name="finish_registration">Завершить регистрацию</string>
 </resources>

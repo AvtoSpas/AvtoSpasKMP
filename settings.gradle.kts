@@ -18,6 +18,7 @@ rootProject.name = "AvtoSpasKMP"
 include(":androidApp")
 include(":shared")
 include(":core-ui")
+include(":data")
 
 include(
     ":features:login",

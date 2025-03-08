@@ -3,10 +3,13 @@ package ru.avtospas.feature.login.presentation
 import androidx.compose.runtime.Immutable
 
 @Immutable
-internal data class SignUpUiState(
+data class SignUpUiState(
     val phoneNumber: String = "",
+    val formattedPhoneNumber: String = "",
     val isContinueToCodeAvailable: Boolean = false,
     val otpCode: String = "",
+    val name: String = "",
+    val surname: String = "",
     val isContinueToPersonalInfoAvailable: Boolean = false,
     val isContinueToMainAvailable: Boolean = false,
 ) {
@@ -16,16 +19,22 @@ internal data class SignUpUiState(
 }
 
 @Immutable
-internal sealed class SignUpUiEvent {
-    data object OnContinueToCodeScreen : SignUpUiEvent()
-    data object OnContinueToPersonalInfo : SignUpUiEvent()
+sealed class SignUpUiEvent {
+    data object OnNavigateToStartScreen : SignUpUiEvent()
+    data object OnNavigateToPhoneScreen : SignUpUiEvent()
+    data object OnVerifyPhoneNumber : SignUpUiEvent()
+    data object OnVerifyOtpCode : SignUpUiEvent()
 
-    data object OnPhoneNumberCheck : SignUpUiEvent()
-    data object OnPhoneCodeCheck : SignUpUiEvent()
+    data class OnPhoneNumberChange(val newValue: String) : SignUpUiEvent()
+    data class OnOtpCodeChange(val newValue: String) : SignUpUiEvent()
+    data class OnNameChange(val newValue: String) : SignUpUiEvent()
+    data class OnSurnameChange(val newValue: String) : SignUpUiEvent()
 }
 
 @Immutable
-internal sealed class SignUpUiEffect {
-    data object ContinueToCodeScreen : SignUpUiEffect()
-    data object ContinueToPersonalInfo : SignUpUiEffect()
+sealed class SignUpUiEffect {
+    data object NavigateToStartScreen : SignUpUiEffect()
+    data object NavigateToPhoneScreen : SignUpUiEffect()
+    data object NavigateToCodeScreen : SignUpUiEffect()
+    data object NavigateToPersonalInfoScreen : SignUpUiEffect()
 }

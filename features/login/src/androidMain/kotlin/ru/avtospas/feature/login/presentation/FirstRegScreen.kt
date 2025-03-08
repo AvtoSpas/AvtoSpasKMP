@@ -1,6 +1,6 @@
 package ru.avtospas.feature.login.presentation
 
-import androidx.compose.foundation.BorderStroke
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,16 +15,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -32,22 +26,32 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import components.AvtoSpasLogo
+import components.AvtoSpasRedButton
+import dev.icerock.moko.resources.compose.stringResource
 import ru.avtospas.core_ui.theme.AvtoSpasTheme
+import ru.avtospas.feature.login.MR
 
 @Composable
 fun FirstRegScreen(
-    onNavigateToCodeScreen: () -> Unit
+    name: String,
+    surname: String,
+    onNameChange: (String) -> Unit,
+    onSurnameChange: (String) -> Unit,
+    isContinueAvailable: Boolean,
+    modifier: Modifier = Modifier,
+    onBack: () -> Unit
 ) {
-    var surname by remember { mutableStateOf("") }
-    var name by remember { mutableStateOf("") }
-    Column {
+    Column(
+        modifier = modifier,
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(15.dp, top = 60.dp)
         ) {
             IconButton(
-                onClick = onNavigateToCodeScreen,
+                onClick = onBack,
                 Modifier.size(45.dp)
             ) {
                 Icon(
@@ -57,29 +61,13 @@ fun FirstRegScreen(
                 )
             }
         }
-        Row(
+
+        AvtoSpasLogo(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(60.dp, 15.dp),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = "Авто",
-                textAlign = TextAlign.Center,
-                color = AvtoSpasTheme.colorScheme.defDarkWhite,
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold
+        )
 
-            )
-
-            Text(
-                text = "Спас",
-                textAlign = TextAlign.Center,
-                color = AvtoSpasTheme.colorScheme.orangeColor,
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold
-            )
-        }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -92,7 +80,7 @@ fun FirstRegScreen(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 Text(
-                    text = "Введите данные о себе",
+                    text = stringResource(MR.strings.enter_personal_information),
                     textAlign = TextAlign.Center,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
@@ -113,9 +101,7 @@ fun FirstRegScreen(
                                 color = AvtoSpasTheme.colorScheme.defDarkWhite,
                                 textAlign = TextAlign.Center
                             ),
-                            onValueChange = {
-                                surname = it
-                            },
+                            onValueChange = onSurnameChange,
 
                             modifier = Modifier
                                 .height(50.dp)
@@ -149,9 +135,7 @@ fun FirstRegScreen(
                                 color = AvtoSpasTheme.colorScheme.defDarkWhite,
                                 textAlign = TextAlign.Center
                             ),
-                            onValueChange = {
-                                name = it
-                            },
+                            onValueChange = onNameChange,
 
                             modifier = Modifier
                                 .height(50.dp)
@@ -180,18 +164,16 @@ fun FirstRegScreen(
                         )
                     }
 
-                    Button(
+                    AvtoSpasRedButton(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(47.dp)
                             .padding(horizontal = 30.dp),
-                        shape = RoundedCornerShape(14.dp),
-                        border = BorderStroke(3.dp, color = AvtoSpasTheme.colorScheme.orangeColor),
-                        colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.orangeColor),
+                        enabled = isContinueAvailable,
                         onClick = { }
                     ) {
                         Text(
-                            text = "Завершить регистрацию",
+                            text = stringResource(MR.strings.finish_registration),
                             color = AvtoSpasTheme.colorScheme.white,
                             fontSize = 16.sp
                         )
@@ -199,6 +181,10 @@ fun FirstRegScreen(
 
                 }
             }
+        }
+
+        BackHandler {
+            onBack()
         }
     }
 }

@@ -40,7 +40,6 @@ android {
 dependencies {
     implementation(projects.coreUi)
     implementation(projects.shared)
-    implementation(projects.features.login)
 
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)

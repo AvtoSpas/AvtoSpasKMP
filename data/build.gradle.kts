@@ -44,7 +44,7 @@ kotlin {
 }
 
 android {
-    namespace = "ru.avtospas.feature.edit_profile"
+    namespace = "ru.avtospas.data"
     compileSdk = 35
     defaultConfig {
         minSdk = 24
