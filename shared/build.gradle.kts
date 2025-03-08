@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.skie)
+    alias(libs.plugins.mutliplatform.resources)
 }
 
 kotlin {
@@ -25,6 +26,7 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             isStatic = true
+            export(libs.resources)
             // TODO: test it
             export(projects.features.login)
             export(projects.features.editProfile)
