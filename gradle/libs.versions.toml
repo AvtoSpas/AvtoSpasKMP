@@ -17,6 +17,8 @@ material = "1.12.0"
 material3Android = "1.3.1"
 resourcesCompose = "0.24.5"
 skie = "0.10.1"
+runtimeAndroid = "1.7.8"
+uiToolingAndroid = "1.7.8"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -48,6 +50,8 @@ androidx-material3-android = { group = "androidx.compose.material3", name = "mat
 resources = { module = "dev.icerock.moko:resources", version.ref = "resourcesCompose" }
 resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resourcesCompose" }
 resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "resourcesCompose" }
+androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
+androidx-ui-tooling-android = { group = "androidx.compose.ui", name = "ui-tooling-android", version.ref = "uiToolingAndroid" }
 
 
 [plugins]

@@ -12,7 +12,10 @@ data class AvtoSpasColorScheme internal constructor(
     val grayButton: Color = Color.Unspecified,
     val grayButtonBorder: Color = Color.Unspecified,
     val white: Color = Color.White,
-    val dark: Color = Color.Black
+    val dark: Color = Color.Black,
+    val searchIconColor : Color = Color.Unspecified,
+    val whiteGray: Color = Color.Unspecified,
+    val darkGray: Color = Color.Unspecified
 ) {
     companion object {
         val Light = AvtoSpasColorScheme(
@@ -20,7 +23,10 @@ data class AvtoSpasColorScheme internal constructor(
             defDarkWhite = Color.Black,
             defOrangeWhite = Color(0xffE53B19),
             grayButton = Color.White,
-            grayButtonBorder = Color(0xffE8E7E7)
+            grayButtonBorder = Color(0xffE8E7E7),
+            searchIconColor = Color(0xff96594F),
+            whiteGray = Color.White,
+            darkGray = Color.Black
         )
 
         val Dark = AvtoSpasColorScheme(
@@ -28,7 +34,10 @@ data class AvtoSpasColorScheme internal constructor(
             defDarkWhite = Color.White,
             defOrangeWhite = Color.White,
             grayButton = Color(0xFF404040),
-            grayButtonBorder = Color(0xFF404040)
+            grayButtonBorder = Color(0xFF404040),
+            searchIconColor = Color.White,
+            whiteGray = Color(0xFF121212),
+            darkGray = Color(0xFF121212)
         )
     }
 }

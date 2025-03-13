@@ -56,3 +56,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+dependencies {
+    implementation(project(":core-ui"))
+    implementation(libs.androidx.runtime.android)
+    implementation(libs.androidx.ui.tooling.android)
+}
