@@ -10,6 +10,9 @@ sealed class Screen {
     @Serializable
     data object SignUpScreen : Screen()
 
+    @Serializable
+    data object MainScreen : Screen()
+
 //    @Serializable
 //    object PhoneScreen : Screen()
 //

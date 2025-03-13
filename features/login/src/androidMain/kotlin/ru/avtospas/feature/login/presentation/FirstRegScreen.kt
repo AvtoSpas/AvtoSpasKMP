@@ -40,6 +40,7 @@ fun FirstRegScreen(
     onSurnameChange: (String) -> Unit,
     isContinueAvailable: Boolean,
     modifier: Modifier = Modifier,
+    onContinueClick: () -> Unit,
     onBack: () -> Unit
 ) {
     Column(
@@ -170,7 +171,7 @@ fun FirstRegScreen(
                             .height(47.dp)
                             .padding(horizontal = 30.dp),
                         enabled = isContinueAvailable,
-                        onClick = { }
+                        onClick = { onContinueClick()}
                     ) {
                         Text(
                             text = stringResource(MR.strings.finish_registration),

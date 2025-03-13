@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import ru.avtospas.feature.login.presentation.SignUpScreen
 import ru.avtospas.feature.login.presentation.StartScreen
+import ru.avtospas.feature.main.presentation.MainScreen
 
 @Composable
 fun NavigationGraph(
@@ -19,13 +20,20 @@ fun NavigationGraph(
             StartScreen(
                 onNavigateToPhoneScreen = {
                     navController.navigate(Screen.SignUpScreen)
-                }
+                },
+                onNavigateToMainScreen = {navController.navigate(Screen.MainScreen)}
             )
         }
 
         composable<Screen.SignUpScreen> {
             SignUpScreen(
-                onNavigateToStartScreen = { navController.navigate(Screen.StartScreen) }
+                onNavigateToStartScreen = { navController.navigate(Screen.StartScreen) },
+                onNavigateToMainScreen = {navController.navigate(Screen.MainScreen)}
+            )
+        }
+
+        composable<Screen.MainScreen> {
+            MainScreen(
             )
         }
 

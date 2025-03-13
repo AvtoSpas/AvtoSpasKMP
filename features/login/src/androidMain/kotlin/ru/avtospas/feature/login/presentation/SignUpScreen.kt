@@ -14,6 +14,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun SignUpScreen(
     modifier: Modifier = Modifier,
     onNavigateToStartScreen: () -> Unit,
+    onNavigateToMainScreen: () -> Unit,
     viewModel: SignUpViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.state.collectAsState()
@@ -36,6 +37,10 @@ fun SignUpScreen(
 
                 is SignUpUiEffect.NavigateToPersonalInfoScreen -> {
                     pagerState.animateScrollToPage(2)
+                }
+
+                is SignUpUiEffect.NavigateToMainScreen -> {
+                    onNavigateToMainScreen()
                 }
             }
         }
@@ -87,15 +92,20 @@ fun SignUpScreen(
                     modifier = Modifier.fillMaxSize(),
                     name = uiState.name,
                     surname = uiState.surname,
-                    onNameChange = { name -> viewModel.sendEvent(SignUpUiEvent.OnNameChange(name)) },
+                    onNameChange = { name ->
+                        viewModel.sendEvent(SignUpUiEvent.OnNameChange(name)
+                        )
+                        viewModel.sendEvent(SignUpUiEvent.OnSurnameAndNameChanged) },
                     onSurnameChange = { surname ->
                         viewModel.sendEvent(
                             SignUpUiEvent.OnSurnameChange(
                                 surname
                             )
                         )
+                        viewModel.sendEvent(SignUpUiEvent.OnSurnameAndNameChanged)
                     },
-                    isContinueAvailable = false,
+                    isContinueAvailable = uiState.isContinueToMainAvailable,
+                    onContinueClick = {viewModel.sendEvent(SignUpUiEvent.OnNavigateToMainScreen)},
                     onBack = { viewModel.sendEvent(SignUpUiEvent.OnNavigateToPhoneScreen) }
                 )
             }

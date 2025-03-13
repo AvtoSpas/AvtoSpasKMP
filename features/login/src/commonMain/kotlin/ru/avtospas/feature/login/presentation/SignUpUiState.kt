@@ -22,8 +22,10 @@ data class SignUpUiState(
 sealed class SignUpUiEvent {
     data object OnNavigateToStartScreen : SignUpUiEvent()
     data object OnNavigateToPhoneScreen : SignUpUiEvent()
+    data object OnNavigateToMainScreen : SignUpUiEvent()
     data object OnVerifyPhoneNumber : SignUpUiEvent()
     data object OnVerifyOtpCode : SignUpUiEvent()
+    data object OnSurnameAndNameChanged : SignUpUiEvent()
 
     data class OnPhoneNumberChange(val newValue: String) : SignUpUiEvent()
     data class OnOtpCodeChange(val newValue: String) : SignUpUiEvent()
@@ -37,4 +39,5 @@ sealed class SignUpUiEffect {
     data object NavigateToPhoneScreen : SignUpUiEffect()
     data object NavigateToCodeScreen : SignUpUiEffect()
     data object NavigateToPersonalInfoScreen : SignUpUiEffect()
+    data object NavigateToMainScreen : SignUpUiEffect()
 }

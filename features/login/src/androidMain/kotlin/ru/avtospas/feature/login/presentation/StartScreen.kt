@@ -25,7 +25,8 @@ import ru.avtospas.feature.login.MR
 
 @Composable
 fun StartScreen(
-    onNavigateToPhoneScreen: () -> Unit
+    onNavigateToPhoneScreen: () -> Unit,
+    onNavigateToMainScreen: () -> Unit
 ) {
     Column {
         Row(
@@ -88,7 +89,7 @@ fun StartScreen(
                         .fillMaxWidth()
                         .height(60.dp)
                         .padding(horizontal = 40.dp),
-                    onClick = { }
+                    onClick = onNavigateToMainScreen
                 ) {
                     Text(
                         text = stringResource(MR.strings.sign_in),

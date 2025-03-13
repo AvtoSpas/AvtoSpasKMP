@@ -51,6 +51,10 @@ class SignUpViewModel(
                 viewModelScope.launch { _effect.emit(SignUpUiEffect.NavigateToPhoneScreen) }
             }
 
+            is SignUpUiEvent.OnNavigateToMainScreen ->{
+                viewModelScope.launch { _effect.emit(SignUpUiEffect.NavigateToMainScreen) }
+            }
+
             is SignUpUiEvent.OnVerifyPhoneNumber -> {
                 viewModelScope.launch { verifyPhoneNumber() }
             }
@@ -59,7 +63,9 @@ class SignUpViewModel(
                 viewModelScope.launch { verifyOtpCode() }
             }
 
-
+            is SignUpUiEvent.OnSurnameAndNameChanged -> {
+                viewModelScope.launch { handleSurnameAndNameIsNotNull() }
+            }
         }
     }
 
@@ -124,6 +130,21 @@ class SignUpViewModel(
 
     private fun handleSurnameChange(newSurname: String) {
         _state.update { it.copy(surname = newSurname) }
+    }
+
+    private fun handleSurnameAndNameIsNotNull(){
+        if (_state.value.name != "" && _state.value.surname != "")
+            _state.update {
+                it.copy(
+                    isContinueToMainAvailable = true
+                )
+            }
+        else
+            _state.update {
+                it.copy(
+                    isContinueToMainAvailable = false
+                )
+            }
     }
 
     private fun formatPhoneNumber(digits: String): String {
