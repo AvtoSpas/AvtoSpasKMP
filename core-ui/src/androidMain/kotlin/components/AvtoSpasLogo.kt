@@ -21,7 +21,7 @@ fun AvtoSpasLogo(
         Text(
             text = "Авто",
             textAlign = TextAlign.Center,
-            color = AvtoSpasTheme.colorScheme.defDarkWhite,
+            color = AvtoSpasTheme.colorScheme.defBlackWhite,
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold
 
@@ -30,7 +30,7 @@ fun AvtoSpasLogo(
         Text(
             text = "Спас",
             textAlign = TextAlign.Center,
-            color = AvtoSpasTheme.colorScheme.orangeColor,
+            color = AvtoSpasTheme.colorScheme.corporateOrangeColor,
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold
         )

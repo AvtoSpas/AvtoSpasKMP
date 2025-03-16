@@ -1,8 +1,9 @@
 package ru.avtospas.feature.main.presentation
 
-import androidx.compose.foundation.Image
+import android.media.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,24 +12,21 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.BottomSheetScaffold
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SheetValue
 
 import androidx.compose.material3.Text
@@ -40,18 +38,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.avtospas.core_ui.theme.AvtoSpasTheme
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.res.painterResource
+import dev.icerock.moko.resources.ImageResource
+import ru.avtospas.feature.login.MR
+
+data class CustomRudioOption(
+    val icon: ImageResource,
+    val rait: String,
+    val title: String,
+    val price: String
+)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -62,6 +68,11 @@ fun MainScreen(
     var raiting by remember { mutableStateOf("") }
     var from by remember { mutableStateOf("")}
     var to by remember { mutableStateOf("")}
+
+    var selectedOption by remember { mutableStateOf("") }
+    val options = remember { mutableStateListOf(
+        CustomRudioOption(MR.images.truck, "4,9", "Со здвижной платформой", "5000,00")
+    ) }
 
     val sheetState = rememberStandardBottomSheetState(initialValue = SheetValue.PartiallyExpanded)
     val scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = sheetState)
@@ -82,7 +93,7 @@ fun MainScreen(
                         value = from,
                         textStyle = TextStyle(
                             fontSize = 20.sp,
-                            color = AvtoSpasTheme.colorScheme.defDarkWhite
+                            color = AvtoSpasTheme.colorScheme.defBlackWhite
                         ),
                         onValueChange = {newText -> from = newText},
                         singleLine = true,
@@ -101,7 +112,7 @@ fun MainScreen(
                                         Icon(
                                             imageVector = Icons.Filled.LocationOn,
                                             contentDescription = "Marker Pin",
-                                            tint = AvtoSpasTheme.colorScheme.defDarkWhite,
+                                            tint = AvtoSpasTheme.colorScheme.defBlackWhite,
                                             modifier = Modifier.size(24.dp)
                                         )
                                         Spacer(modifier = Modifier.width(10.dp))
@@ -111,14 +122,14 @@ fun MainScreen(
                                             if(from.isEmpty()){
                                                 Text(
                                                     text = "Откуда едем?",
-                                                    color = AvtoSpasTheme.colorScheme.defDarkWhite
+                                                    color = AvtoSpasTheme.colorScheme.defBlackWhite
                                                 )
                                             }
                                             innerTextField()
                                             Box(modifier = Modifier
                                                 .fillMaxWidth()
                                                 .height(1.dp)
-                                                .background(AvtoSpasTheme.colorScheme.defDarkWhite)
+                                                .background(AvtoSpasTheme.colorScheme.defBlackWhite)
                                                 .align(Alignment.BottomCenter)
                                             )
                                         }
@@ -135,7 +146,7 @@ fun MainScreen(
                         value = to,
                         textStyle = TextStyle(
                             fontSize = 20.sp,
-                            color = AvtoSpasTheme.colorScheme.defDarkWhite
+                            color = AvtoSpasTheme.colorScheme.defBlackWhite
                         ),
                         onValueChange = {newText -> to = newText},
                         singleLine = true,
@@ -154,7 +165,7 @@ fun MainScreen(
                                         Icon(
                                             imageVector = Icons.Filled.LocationOn,
                                             contentDescription = "Marker Pin",
-                                            tint = AvtoSpasTheme.colorScheme.defDarkWhite,
+                                            tint = AvtoSpasTheme.colorScheme.defBlackWhite,
                                             modifier = Modifier.size(24.dp)
                                         )
                                         Spacer(modifier = Modifier.width(10.dp))
@@ -164,25 +175,46 @@ fun MainScreen(
                                             if(to.isEmpty()){
                                                 Text(
                                                     text = "Куда едем?",
-                                                    color = AvtoSpasTheme.colorScheme.defDarkWhite
+                                                    color = AvtoSpasTheme.colorScheme.defBlackWhite
                                                 )
                                             }
                                             innerTextField()
                                             Box(modifier = Modifier
                                                 .fillMaxWidth()
                                                 .height(1.dp)
-                                                .background(AvtoSpasTheme.colorScheme.defDarkWhite)
+                                                .background(AvtoSpasTheme.colorScheme.defBlackWhite)
                                                 .align(Alignment.BottomCenter)
                                             )
                                         }
                                         Spacer(modifier = Modifier.width(55.dp))
                                     }
                                 }
-
                             }
+
                         }
                     )
                 }
+                LazyRow {
+                    items(options) { option ->
+                        Column(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(8.dp))
+                                .background(if (option.title == selectedOption) AvtoSpasTheme.colorScheme.whiteGray else AvtoSpasTheme.colorScheme.grayButton)
+                                .clickable { selectedOption = option.title }
+                                .padding(vertical = 12.dp, horizontal = 16.dp)
+                        ) {
+
+                            Text(
+                                text = option.title,
+                                color = AvtoSpasTheme.colorScheme.defBlackWhite,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(10.dp))
+                    }
+                }
+                Spacer(modifier = Modifier.height(700.dp))
                 //Сюда делаем дальше
             }
         }
@@ -210,7 +242,7 @@ fun MainScreen(
                             value = address,
                             textStyle = TextStyle(
                                 fontSize = 20.sp,
-                                color = AvtoSpasTheme.colorScheme.defDarkWhite
+                                color = AvtoSpasTheme.colorScheme.defBlackWhite
                             ),
                             onValueChange = {newText -> address = newText},
                             singleLine = true,
@@ -302,7 +334,7 @@ fun MainScreen(
                                         ) {
                                         Text(
                                             text = raiting,
-                                            color = AvtoSpasTheme.colorScheme.defDarkWhite,
+                                            color = AvtoSpasTheme.colorScheme.defBlackWhite,
                                             fontSize = 10.sp,
                                             fontWeight = FontWeight.Bold,
                                             modifier = Modifier.padding(vertical = 0.dp)

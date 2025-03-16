@@ -38,7 +38,7 @@ fun StartScreen(
             Text(
                 text = "Авто",
                 textAlign = TextAlign.Center,
-                color = AvtoSpasTheme.colorScheme.defDarkWhite,
+                color = AvtoSpasTheme.colorScheme.defBlackWhite,
                 fontSize = 60.sp,
                 fontWeight = FontWeight.Bold
 
@@ -47,7 +47,7 @@ fun StartScreen(
             Text(
                 text = "Спас",
                 textAlign = TextAlign.Center,
-                color = AvtoSpasTheme.colorScheme.orangeColor,
+                color = AvtoSpasTheme.colorScheme.corporateOrangeColor,
                 fontSize = 60.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -93,7 +93,7 @@ fun StartScreen(
                 ) {
                     Text(
                         text = stringResource(MR.strings.sign_in),
-                        color = AvtoSpasTheme.colorScheme.defOrangeWhite,
+                        color = AvtoSpasTheme.colorScheme.defCorporateOrangeWhite,
                         fontSize = 16.sp
                     )
                 }

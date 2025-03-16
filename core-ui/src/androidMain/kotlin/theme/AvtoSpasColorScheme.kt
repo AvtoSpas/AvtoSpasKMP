@@ -5,39 +5,39 @@ import androidx.compose.ui.graphics.Color
 
 @Immutable
 data class AvtoSpasColorScheme internal constructor(
-    val orangeColor: Color = Color(0xffE53B19),
-    val defWhiteDark: Color = Color.Unspecified,
-    val defDarkWhite: Color = Color.Unspecified,
-    val defOrangeWhite: Color = Color.Unspecified,
+    val corporateOrangeColor: Color = Color(0xffE53B19),
+    val defWhiteBlack: Color = Color.Unspecified,
+    val defBlackWhite: Color = Color.Unspecified,
+    val defCorporateOrangeWhite: Color = Color.Unspecified,
     val grayButton: Color = Color.Unspecified,
     val grayButtonBorder: Color = Color.Unspecified,
     val white: Color = Color.White,
-    val dark: Color = Color.Black,
+    val black: Color = Color.Black,
     val searchIconColor : Color = Color.Unspecified,
     val whiteGray: Color = Color.Unspecified,
-    val darkGray: Color = Color.Unspecified
+    val blackGray: Color = Color.Unspecified
 ) {
     companion object {
         val Light = AvtoSpasColorScheme(
-            defWhiteDark = Color.White,
-            defDarkWhite = Color.Black,
-            defOrangeWhite = Color(0xffE53B19),
+            defWhiteBlack = Color.White,
+            defBlackWhite = Color.Black,
+            defCorporateOrangeWhite = Color(0xffE53B19),
             grayButton = Color.White,
             grayButtonBorder = Color(0xffE8E7E7),
             searchIconColor = Color(0xff96594F),
             whiteGray = Color.White,
-            darkGray = Color.Black
+            blackGray = Color.Black
         )
 
         val Dark = AvtoSpasColorScheme(
-            defWhiteDark = Color.Black,
-            defDarkWhite = Color.White,
-            defOrangeWhite = Color.White,
+            defWhiteBlack = Color.Black,
+            defBlackWhite = Color.White,
+            defCorporateOrangeWhite = Color.White,
             grayButton = Color(0xFF404040),
             grayButtonBorder = Color(0xFF404040),
             searchIconColor = Color.White,
             whiteGray = Color(0xFF121212),
-            darkGray = Color(0xFF121212)
+            blackGray = Color(0xFF121212)
         )
     }
 }

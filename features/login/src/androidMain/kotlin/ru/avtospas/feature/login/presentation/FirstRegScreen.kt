@@ -99,7 +99,7 @@ fun FirstRegScreen(
                             value = surname,
                             textStyle = TextStyle(
                                 fontSize = 20.sp,
-                                color = AvtoSpasTheme.colorScheme.defDarkWhite,
+                                color = AvtoSpasTheme.colorScheme.defBlackWhite,
                                 textAlign = TextAlign.Center
                             ),
                             onValueChange = onSurnameChange,
@@ -133,7 +133,7 @@ fun FirstRegScreen(
                             value = name,
                             textStyle = TextStyle(
                                 fontSize = 20.sp,
-                                color = AvtoSpasTheme.colorScheme.defDarkWhite,
+                                color = AvtoSpasTheme.colorScheme.defBlackWhite,
                                 textAlign = TextAlign.Center
                             ),
                             onValueChange = onNameChange,

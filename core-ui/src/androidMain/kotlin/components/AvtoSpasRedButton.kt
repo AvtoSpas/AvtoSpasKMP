@@ -21,8 +21,8 @@ fun AvtoSpasRedButton(
         modifier = modifier,
         enabled = enabled,
         shape = RoundedCornerShape(14.dp),
-        border = BorderStroke(3.dp, color = AvtoSpasTheme.colorScheme.orangeColor),
-        colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.orangeColor),
+        border = BorderStroke(3.dp, color = AvtoSpasTheme.colorScheme.corporateOrangeColor),
+        colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.corporateOrangeColor),
         onClick = onClick,
         content = content,
     )

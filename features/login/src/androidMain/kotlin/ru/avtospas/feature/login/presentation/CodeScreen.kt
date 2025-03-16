@@ -98,7 +98,7 @@ fun CodeScreen(
                         value = otpCode,
                         textStyle = TextStyle(
                             fontSize = 20.sp,
-                            color = AvtoSpasTheme.colorScheme.defDarkWhite,
+                            color = AvtoSpasTheme.colorScheme.defBlackWhite,
                             textAlign = TextAlign.Center
                         ),
                         visualTransformation = OtpCodeVisualTransformation(),
@@ -159,7 +159,7 @@ fun CodeScreen(
                         ) {
                             Text(
                                 text = stringResource(MR.strings.send_code_again),
-                                color = AvtoSpasTheme.colorScheme.defDarkWhite,
+                                color = AvtoSpasTheme.colorScheme.defBlackWhite,
                                 fontSize = 16.sp
                             )
                         }

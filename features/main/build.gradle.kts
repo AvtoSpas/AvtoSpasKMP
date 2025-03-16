@@ -60,4 +60,6 @@ dependencies {
     implementation(project(":core-ui"))
     implementation(libs.androidx.runtime.android)
     implementation(libs.androidx.ui.tooling.android)
+    implementation(project(":features:login"))
+    implementation(project(":features:login"))
 }

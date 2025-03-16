@@ -92,7 +92,7 @@ fun PhoneScreen(
                     visualTransformation = RussianPhoneNumberVisualTransformation(),
                     textStyle = TextStyle(
                         fontSize = 20.sp,
-                        color = AvtoSpasTheme.colorScheme.defDarkWhite
+                        color = AvtoSpasTheme.colorScheme.defBlackWhite
                     ),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         keyboardType = KeyboardType.Phone
