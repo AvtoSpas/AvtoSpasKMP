@@ -14,6 +14,8 @@
 		2F67FFB32D5DDFAD00B57EEE /* TextConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67FFB22D5DDFA100B57EEE /* TextConstants.swift */; };
 		2F67FFB82D62292200B57EEE /* RegistrationNumberScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67FFB72D62291F00B57EEE /* RegistrationNumberScreen.swift */; };
 		2F67FFBB2D62308D00B57EEE /* CheckNumberScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67FFBA2D62308D00B57EEE /* CheckNumberScreen.swift */; };
+		2FBC2B8C2D83416B002992B4 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */; };
+		2FBC2B8E2D8341A2002992B4 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC2B8D2D8341A2002992B4 /* MainScreen.swift */; };
 		7555FF83242A565900829871 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* StartScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		2F67FFB22D5DDFA100B57EEE /* TextConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConstants.swift; sourceTree = "<group>"; };
 		2F67FFB72D62291F00B57EEE /* RegistrationNumberScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationNumberScreen.swift; sourceTree = "<group>"; };
 		2F67FFBA2D62308D00B57EEE /* CheckNumberScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNumberScreen.swift; sourceTree = "<group>"; };
+		2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		2FBC2B8D2D8341A2002992B4 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,10 +77,9 @@
 		2F67FFB42D5DDFEA00B57EEE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2F01BB682D62436A005A4423 /* RegistrationNameScreen.swift */,
-				2F67FFB72D62291F00B57EEE /* RegistrationNumberScreen.swift */,
-				7555FF82242A565900829871 /* StartScreen.swift */,
-				2F67FFBA2D62308D00B57EEE /* CheckNumberScreen.swift */,
+				2FBC2B882D834104002992B4 /* Components */,
+				2FBC2B872D8306F3002992B4 /* MainViews */,
+				2FBC2B862D8306B9002992B4 /* LoginViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -86,6 +89,33 @@
 			children = (
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2FBC2B862D8306B9002992B4 /* LoginViews */ = {
+			isa = PBXGroup;
+			children = (
+				2F01BB682D62436A005A4423 /* RegistrationNameScreen.swift */,
+				2F67FFB72D62291F00B57EEE /* RegistrationNumberScreen.swift */,
+				7555FF82242A565900829871 /* StartScreen.swift */,
+				2F67FFBA2D62308D00B57EEE /* CheckNumberScreen.swift */,
+			);
+			path = LoginViews;
+			sourceTree = "<group>";
+		};
+		2FBC2B872D8306F3002992B4 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC2B8D2D8341A2002992B4 /* MainScreen.swift */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
+		2FBC2B882D834104002992B4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		7555FF72242A565900829871 = {
@@ -236,10 +266,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBC2B8E2D8341A2002992B4 /* MainScreen.swift in Sources */,
 				2F01BB692D62436C005A4423 /* RegistrationNameScreen.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				2F67FFB32D5DDFAD00B57EEE /* TextConstants.swift in Sources */,
 				2F67FFB82D62292200B57EEE /* RegistrationNumberScreen.swift in Sources */,
+				2FBC2B8C2D83416B002992B4 /* BottomSheetView.swift in Sources */,
 				7555FF83242A565900829871 /* StartScreen.swift in Sources */,
 				2F67FFBB2D62308D00B57EEE /* CheckNumberScreen.swift in Sources */,
 			);

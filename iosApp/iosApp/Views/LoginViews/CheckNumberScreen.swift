@@ -13,6 +13,8 @@ struct CheckNumberScreen: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var codeState = ""
     
+    let phoneNumber: String
+    
     var body: some View {
         VStack(alignment: .center) {
             HStack {
@@ -22,7 +24,7 @@ struct CheckNumberScreen: View {
             }
             .padding(.top, 20)
             VStack{
-                Text("Код был отправлен на номер +7 (000) 000-00-00")
+                Text("Код был отправлен на номер: " + " \(phoneNumber)")
                     .foregroundStyle(colorScheme == .dark ? .white : .black)
                     .font(.system(size: 14))
                     .fontWeight(.bold)
@@ -97,5 +99,5 @@ func formatCode(_ phoneNumber: String) -> String {
 }
 
 #Preview {
-    CheckNumberScreen()
+    CheckNumberScreen(phoneNumber: "+7 (913) 123-45-67")
 }
