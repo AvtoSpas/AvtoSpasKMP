@@ -44,7 +44,7 @@ struct RegistrationNameScreen: View {
                     .cornerRadius(12)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("OutlineButtonColor"), lineWidth: 2))
                     .padding(.top, 10)
-                 
+                
                 NavigationLink(destination: MainScreen()) {
                     Text("Далее").foregroundColor(.white)
                         .font(.system(size: 16))

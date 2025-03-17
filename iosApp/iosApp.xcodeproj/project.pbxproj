@@ -14,6 +14,9 @@
 		2F67FFB32D5DDFAD00B57EEE /* TextConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67FFB22D5DDFA100B57EEE /* TextConstants.swift */; };
 		2F67FFB82D62292200B57EEE /* RegistrationNumberScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67FFB72D62291F00B57EEE /* RegistrationNumberScreen.swift */; };
 		2F67FFBB2D62308D00B57EEE /* CheckNumberScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67FFBA2D62308D00B57EEE /* CheckNumberScreen.swift */; };
+		2F991BC02D88078D008DC99F /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F991BBF2D88078D008DC99F /* CarModel.swift */; };
+		2F991BC32D880972008DC99F /* CarsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F991BC22D880972008DC99F /* CarsViewModel.swift */; };
+		2F991BC52D881262008DC99F /* CarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F991BC42D881262008DC99F /* CarCellView.swift */; };
 		2FBC2B8C2D83416B002992B4 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */; };
 		2FBC2B8E2D8341A2002992B4 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC2B8D2D8341A2002992B4 /* MainScreen.swift */; };
 		7555FF83242A565900829871 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* StartScreen.swift */; };
@@ -40,6 +43,9 @@
 		2F67FFB22D5DDFA100B57EEE /* TextConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConstants.swift; sourceTree = "<group>"; };
 		2F67FFB72D62291F00B57EEE /* RegistrationNumberScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationNumberScreen.swift; sourceTree = "<group>"; };
 		2F67FFBA2D62308D00B57EEE /* CheckNumberScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNumberScreen.swift; sourceTree = "<group>"; };
+		2F991BBF2D88078D008DC99F /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
+		2F991BC22D880972008DC99F /* CarsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewModel.swift; sourceTree = "<group>"; };
+		2F991BC42D881262008DC99F /* CarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCellView.swift; sourceTree = "<group>"; };
 		2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		2FBC2B8D2D8341A2002992B4 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +97,22 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		2F991BBC2D88074F008DC99F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2F991BBF2D88078D008DC99F /* CarModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2F991BC12D88085B008DC99F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2F991BC22D880972008DC99F /* CarsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		2FBC2B862D8306B9002992B4 /* LoginViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */,
+				2F991BC42D881262008DC99F /* CarCellView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -138,6 +161,8 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				2F991BC12D88085B008DC99F /* ViewModels */,
+				2F991BBC2D88074F008DC99F /* Models */,
 				2F67FFB52D5DDFF100B57EEE /* ViewControllers */,
 				2F67FFB42D5DDFEA00B57EEE /* Views */,
 				2F67FFB12D5DDF8A00B57EEE /* Constants */,
@@ -268,9 +293,12 @@
 			files = (
 				2FBC2B8E2D8341A2002992B4 /* MainScreen.swift in Sources */,
 				2F01BB692D62436C005A4423 /* RegistrationNameScreen.swift in Sources */,
+				2F991BC52D881262008DC99F /* CarCellView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				2F67FFB32D5DDFAD00B57EEE /* TextConstants.swift in Sources */,
 				2F67FFB82D62292200B57EEE /* RegistrationNumberScreen.swift in Sources */,
+				2F991BC32D880972008DC99F /* CarsViewModel.swift in Sources */,
+				2F991BC02D88078D008DC99F /* CarModel.swift in Sources */,
 				2FBC2B8C2D83416B002992B4 /* BottomSheetView.swift in Sources */,
 				7555FF83242A565900829871 /* StartScreen.swift in Sources */,
 				2F67FFBB2D62308D00B57EEE /* CheckNumberScreen.swift in Sources */,

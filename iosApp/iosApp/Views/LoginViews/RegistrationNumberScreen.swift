@@ -20,7 +20,7 @@ struct RegistrationNumberScreen: View {
                 Text("Введите номер телефона")
                     .foregroundStyle(colorScheme == .dark ? .white : .black)
                     .padding(.top, 10)
-                     .font(.system(size: 14))
+                    .font(.system(size: 14))
                     .fontWeight(.bold)
                 
                 TextField("+7 (000) 000-00-00", text: $phoneNumber)

@@ -4,7 +4,7 @@ import shared
 struct StartScreen: View {
     @Environment(\.colorScheme) var colorScheme
     
-	var body: some View {
+    var body: some View {
         NavigationView {
             VStack(alignment: .center) {
                 HStack {
@@ -38,11 +38,5 @@ struct StartScreen: View {
         }
         
         
-	}
+    }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//	static var previews: some View {
-//        StartScreen()
-//	}
-//}
