@@ -13,6 +13,7 @@ data class AvtoSpasColorScheme internal constructor(
     val grayButtonBorder: Color = Color.Unspecified,
     val white: Color = Color.White,
     val black: Color = Color.Black,
+    val lightGray: Color = Color.LightGray,
     val searchIconColor : Color = Color.Unspecified,
     val whiteGray: Color = Color.Unspecified,
     val blackGray: Color = Color.Unspecified

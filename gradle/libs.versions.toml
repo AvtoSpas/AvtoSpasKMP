@@ -1,5 +1,6 @@
 [versions]
 agp = "8.8.2"
+composeSvg = "1.0.0"
 kotlin = "2.0.0"
 compose = "1.7.8"
 compose-material3 = "1.3.1"
@@ -19,8 +20,10 @@ resourcesCompose = "0.24.5"
 skie = "0.10.1"
 runtimeAndroid = "1.7.8"
 uiToolingAndroid = "1.7.8"
+coreKtxVersion = "1.13.0"
 
 [libraries]
+compose-svg = { module = "br.com.devsrsouza.compose.icons:compose-svg", version.ref = "composeSvg" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
@@ -52,6 +55,7 @@ resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref
 resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "resourcesCompose" }
 androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
 androidx-ui-tooling-android = { group = "androidx.compose.ui", name = "ui-tooling-android", version.ref = "uiToolingAndroid" }
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
 
 
 [plugins]

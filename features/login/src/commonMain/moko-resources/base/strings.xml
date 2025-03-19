@@ -8,4 +8,5 @@
     <string name="send_code_again">Отправить код еще раз</string>
     <string name="enter_personal_information">Введите данные о себе</string>
     <string name="finish_registration">Завершить регистрацию</string>
+    <string name="order">Заказать</string>
 </resources>

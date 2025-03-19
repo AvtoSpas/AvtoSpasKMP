@@ -51,10 +51,23 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import dev.icerock.moko.resources.ImageResource
 import ru.avtospas.feature.login.MR
+import androidx.compose.foundation.Image
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.Button
+import androidx.compose.material3.IconButton
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.BitmapPainter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.imageResource
+import components.AvtoSpasRedButton
+import dev.icerock.moko.resources.compose.stringResource
+import ru.avtospas.feature.main.R
 
 data class CustomRudioOption(
-    val icon: ImageResource,
-    val rait: String,
+    val tag: String,
+    val icon: ImageBitmap,
+    val time: String,
     val title: String,
     val price: String
 )
@@ -69,9 +82,16 @@ fun MainScreen(
     var from by remember { mutableStateOf("")}
     var to by remember { mutableStateOf("")}
 
+    //Temp
+
     var selectedOption by remember { mutableStateOf("") }
     val options = remember { mutableStateListOf(
-        CustomRudioOption(MR.images.truck, "4,9", "Со здвижной платформой", "5000,00")
+        CustomRudioOption("1", ImageBitmap(1, 1), "8 минут", "Со сдвижной платформой", "5000,00"),
+        CustomRudioOption("2", ImageBitmap(1, 1), "10 минут", "Со сдвижной платформой", "7000,00"),
+        CustomRudioOption("3", ImageBitmap(1, 1), "12 минут", "Со сдвижной платформой", "8000,00"),
+        CustomRudioOption("4", ImageBitmap(1, 1), "13 минут", "Со сдвижной платформой", "10000,00"),
+        CustomRudioOption("5", ImageBitmap(1, 1), "15 минут", "Со сдвижной платформой", "12000,00"),
+        CustomRudioOption("6", ImageBitmap(1, 1), "17 минут", "Со сдвижной платформой", "15000,00"),
     ) }
 
     val sheetState = rememberStandardBottomSheetState(initialValue = SheetValue.PartiallyExpanded)
@@ -79,7 +99,7 @@ fun MainScreen(
 
     BottomSheetScaffold(
         scaffoldState = scaffoldState,
-        sheetPeekHeight = 350.dp,
+        sheetPeekHeight = 380.dp,
         modifier = Modifier
             .background(AvtoSpasTheme.colorScheme.whiteGray),
         sheetContent = {
@@ -196,22 +216,103 @@ fun MainScreen(
                 }
                 LazyRow {
                     items(options) { option ->
-                        Column(
+                        Box(
                             modifier = Modifier
                                 .clip(RoundedCornerShape(8.dp))
-                                .background(if (option.title == selectedOption) AvtoSpasTheme.colorScheme.whiteGray else AvtoSpasTheme.colorScheme.grayButton)
-                                .clickable { selectedOption = option.title }
+                                .background(if (option.tag == selectedOption) AvtoSpasTheme.colorScheme.lightGray else AvtoSpasTheme.colorScheme.whiteGray)
+                                .clickable { selectedOption = option.tag }
                                 .padding(vertical = 12.dp, horizontal = 16.dp)
+                                .width(80.dp)
+                                .testTag(option.tag),
+                            //horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-
-                            Text(
-                                text = option.title,
-                                color = AvtoSpasTheme.colorScheme.defBlackWhite,
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.Bold
-                            )
+                            Column {
+                                Box(){
+                                    Image(
+                                        painter = dev.icerock.moko.resources.compose.painterResource(MR.images.truck),
+                                        contentDescription = ""
+                                    )
+                                    Column (
+                                        //verticalArrangement = Arrangement.Bottom,
+                                        modifier = Modifier.offset(0.dp)
+                                            .clip(RoundedCornerShape(8.dp))
+                                    ){
+                                        Spacer(modifier = Modifier.height(60.dp))
+                                        Row (
+                                            modifier = Modifier
+                                                .background(AvtoSpasTheme.colorScheme.whiteGray)
+                                                .offset(0.dp)
+                                                .padding(5.dp, 0.dp),
+                                            horizontalArrangement = Arrangement.Center
+                                        ){
+                                            Column (modifier = Modifier
+                                                .padding(0.dp)
+                                                .offset(0.dp)
+                                                //.background(Color.Red)
+                                            ) {
+                                                Text(
+                                                    text = option.time,
+                                                    color = AvtoSpasTheme.colorScheme.defBlackWhite,
+                                                    fontSize = 10.sp,
+                                                    fontWeight = FontWeight.Bold,
+                                                    lineHeight = 11.sp
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Text(
+                                    text = option.title,
+                                    color = AvtoSpasTheme.colorScheme.defBlackWhite,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    lineHeight = 11.sp
+                                )
+                                Text(
+                                    text = option.price,
+                                    color = AvtoSpasTheme.colorScheme.defBlackWhite,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    lineHeight = 11.sp
+                                )
+                            }
                         }
                         Spacer(modifier = Modifier.width(10.dp))
+                    }
+                }
+                Spacer(modifier = Modifier.height(15.dp))
+                Row{
+                    IconButton(
+                        onClick = {}
+                    ) {
+                        Icon(
+                            painter = painterResource(id = MR.images.wallet.drawableResId),
+                            contentDescription = ""
+                        )
+                    }
+                    AvtoSpasRedButton(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(45.dp)
+                            .padding(horizontal = 30.dp)
+                            .weight(1f),
+                        //enabled = ,
+                        onClick = { }
+                    ) {
+                        Text(
+                            text = stringResource(MR.strings.order),
+                            color = AvtoSpasTheme.colorScheme.white,
+                            fontSize = 16.sp
+                        )
+                    }
+                    IconButton(
+                        onClick = {}
+                    ) {
+                        Icon(
+                            painter = painterResource(id = MR.images.sliders.drawableResId),
+                            contentDescription = ""
+                        )
                     }
                 }
                 Spacer(modifier = Modifier.height(700.dp))
