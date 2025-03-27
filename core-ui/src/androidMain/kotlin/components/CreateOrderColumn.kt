@@ -288,7 +288,7 @@ fun CreateOrderColumn(
                 )
             }
         }
-        Spacer(modifier = Modifier.height(400.dp))
+        Spacer(modifier = Modifier.height(500.dp))
         //Сюда делаем дальше
     }
 }
