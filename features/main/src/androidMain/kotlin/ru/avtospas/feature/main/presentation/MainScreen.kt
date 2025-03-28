@@ -81,6 +81,7 @@ import dev.icerock.moko.resources.compose.stringResource
 import ru.avtospas.feature.main.R
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.location.Location
+import components.UserMenuColumn
 
 
 @SuppressLint("MissingPermission", "SuspiciousIndentation")
@@ -127,144 +128,12 @@ fun MainScreen(
                 MR.strings.order.resourceId
             )
             else
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
-                ) {
-                    Row {
-                        Box(
-                            modifier = Modifier
-                                .size(75.dp)
-                                .clip(CircleShape)
-                                .background(Color.Gray)
-
-                        ){
-
-                        }
-                        Spacer(modifier = Modifier.width(15.dp))
-                        Column {
-                            Text(
-                                text = name,
-                                fontSize = 20.sp,
-                                lineHeight = 16.sp
-                            )
-                            Text(
-                                text = surname,
-                                fontSize = 20.sp,
-                                lineHeight = 16.sp
-                            )
-                            Button(
-                                onClick = {},
-                                colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.grayButtonBorder),
-                                shape = RoundedCornerShape(5.dp),
-                                contentPadding = PaddingValues(5.dp)
-
-                            ) {
-                                Text(
-                                    text = "РЕДАКТИРОВАТЬ ПРОФИЛЬ",
-                                    modifier = Modifier
-                                        .padding(0.dp),
-                                    fontSize = 10.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    lineHeight = 1.sp,
-                                    color = AvtoSpasTheme.colorScheme.defBlackWhite
-                                )
-                            }
-                        }
-                        Spacer(modifier = Modifier.width(30.dp))
-                        Column {
-                            Row{
-                                Text(
-                                    text="Рейтинг ",
-                                    color =  AvtoSpasTheme.colorScheme.darkLightGray,
-                                    fontSize = 17.sp
-                                )
-                                Text(
-                                    text = raiting,
-                                    color = AvtoSpasTheme.colorScheme.defBlackWhite,
-                                    fontSize = 17.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            }
-                        }
-                    }
-                    Spacer(modifier = Modifier.height(20.dp))
-                    Text(
-                        text = "Мое местоположение",
-                        color = AvtoSpasTheme.colorScheme.darkLightGray
-                    )
-                    Text(
-                        text = selfLocation,
-                        color = AvtoSpasTheme.colorScheme.defBlackWhite
-                    )
-                    Button(
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                        shape = RoundedCornerShape(5.dp),
-                        contentPadding = PaddingValues(0.dp)
-                    ) {
-                        Text(
-                            text = "История заказов",
-                            color = AvtoSpasTheme.colorScheme.defBlackWhite
-                        )
-                    }
-                    Button(
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                        shape = RoundedCornerShape(5.dp),
-                        contentPadding = PaddingValues(0.dp)
-                    ) {
-                        Text(
-                            text = "Способ оплаты",
-                            color = AvtoSpasTheme.colorScheme.defBlackWhite
-                        )
-                    }
-                    Button(
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                        shape = RoundedCornerShape(5.dp),
-                        contentPadding = PaddingValues(0.dp)
-                    ) {
-                        Text(
-                            text = "Служба поддержки",
-                            color = AvtoSpasTheme.colorScheme.defBlackWhite
-                        )
-                    }
-                    Button(
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                        shape = RoundedCornerShape(5.dp),
-                        contentPadding = PaddingValues(0.dp)
-                    ) {
-                        Text(
-                            text = "Безопасность",
-                            color = AvtoSpasTheme.colorScheme.defBlackWhite
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(400.dp))
-                    Button(
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                        shape = RoundedCornerShape(5.dp),
-                        contentPadding = PaddingValues(0.dp)
-                    ) {
-                        Row (
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.ExitToApp,
-                                contentDescription = "",
-                                tint = AvtoSpasTheme.colorScheme.defBlackWhite
-                            )
-                            Spacer(modifier = Modifier.width(10.dp))
-                            Text(
-                                text = "Выйти из аккаунта",
-                                color = AvtoSpasTheme.colorScheme.defBlackWhite
-                            )
-                        }
-                    }
-                }
+                UserMenuColumn(
+                    name,
+                    surname,
+                    raiting,
+                    selfLocation
+                )
         }
     ) { paddingValues ->
         Box(
