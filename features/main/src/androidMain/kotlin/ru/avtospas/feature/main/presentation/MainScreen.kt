@@ -278,9 +278,16 @@ fun MainScreen(
                 AndroidView(
                     factory = { context ->
                         mapView = MapView(context)
-                        mapView.map.move(
-                            CameraPosition(Point(55.7558, 37.6173), zoom, 0f, 0f) // Пример с координатами Москвы
-                        )
+                        fusedLocationClient.lastLocation.addOnSuccessListener { location: android.location.Location? ->
+                            if (location != null) {
+                                userLocation = Point(location.latitude, location.longitude)
+                                mapView.map.move(
+                                    CameraPosition(userLocation, 17f, 0f, 0f),
+                                    Animation(Animation.Type.SMOOTH, 1f),
+                                    null
+                                )
+                            }
+                        }
                         mapView
                     },
                     modifier = Modifier.fillMaxSize()
@@ -421,13 +428,21 @@ fun MainScreen(
                                     currentPosition.tilt
                                 )
                                 mapView.map.move(newPosition)
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.defWhiteBlack),
+                            modifier =  Modifier
+                                .width(55.dp)
+                                .height(55.dp),
+                            contentPadding = PaddingValues(5.dp),
+                            shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
                         ) {
                             Icon(
-                                imageVector = Icons.Filled.Add,
-                                contentDescription = ""
+                                painter = painterResource(MR.images.add.drawableResId),
+                                contentDescription = "",
+                                tint = AvtoSpasTheme.colorScheme.defBlackWhite
                             )
                         }
+                        Spacer(modifier = Modifier.height(3.dp))
                         Button(
                             onClick = {
                                 val currentPosition = mapView.map.cameraPosition
@@ -439,13 +454,21 @@ fun MainScreen(
                                     currentPosition.tilt
                                 )
                                 mapView.map.move(newPosition)
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.defWhiteBlack),
+                            modifier =  Modifier
+                                .width(55.dp)
+                                .height(55.dp),
+                            contentPadding = PaddingValues(5.dp),
+                            shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)
                         ) {
                             Icon(
                                 painter = painterResource(MR.images.remove.drawableResId),
-                                contentDescription = ""
+                                contentDescription = "",
+                                tint = AvtoSpasTheme.colorScheme.defBlackWhite
                             )
                         }
+                        Spacer(modifier = Modifier.height(10.dp))
                         Button(
                             onClick = {
                                 fusedLocationClient.lastLocation.addOnSuccessListener { location: android.location.Location? ->
@@ -458,11 +481,18 @@ fun MainScreen(
                                         )
                                     }
                                 }
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.defWhiteBlack),
+                            modifier =  Modifier
+                                .width(55.dp)
+                                .height(55.dp),
+                            contentPadding = PaddingValues(5.dp),
+                            shape = RoundedCornerShape(16.dp)
                         ) {
                             Icon(
                                 painter = painterResource(MR.images.depth.drawableResId),
-                                contentDescription = ""
+                                contentDescription = "",
+                                tint = AvtoSpasTheme.colorScheme.defBlackWhite
                             )
                         }
                     }
