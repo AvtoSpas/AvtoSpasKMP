@@ -62,4 +62,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.android)
     implementation(project(":features:login"))
     implementation(project(":features:login"))
+    implementation("com.yandex.android:maps.mobile:4.3.1-lite")
+    implementation(libs.firebase.firestore.ktx)
 }

@@ -1,5 +1,6 @@
 package ru.avtospas.feature.main.presentation
 
+import android.annotation.SuppressLint
 import android.media.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -53,6 +54,7 @@ import dev.icerock.moko.resources.ImageResource
 import ru.avtospas.feature.login.MR
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
@@ -61,15 +63,27 @@ import androidx.compose.material3.IconButton
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.path
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.gms.location.LocationServices
+import com.google.firebase.firestore.GeoPoint
+import com.yandex.mapkit.Animation
+import com.yandex.mapkit.MapKitFactory
+import com.yandex.mapkit.map.CameraPosition
+import com.yandex.mapkit.mapview.MapView
 import components.AvtoSpasRedButton
 import components.CreateOrderColumn
 import dev.icerock.moko.resources.compose.stringResource
 import ru.avtospas.feature.main.R
+import com.yandex.mapkit.geometry.Point
+import com.yandex.mapkit.location.Location
 
 
-
+@SuppressLint("MissingPermission", "SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
@@ -83,8 +97,21 @@ fun MainScreen(
     var surname by remember { mutableStateOf("Иванов") }
     var name by remember { mutableStateOf("Иван") }
 
+    var zoom by remember { mutableStateOf(10f) }
+
+    var userLocation by remember { mutableStateOf(Point(55.7558, 37.6173)) }
+
+    val context = LocalContext.current
+    lateinit var mapView: MapView
+
     val sheetState = rememberStandardBottomSheetState(initialValue = SheetValue.PartiallyExpanded)
     val scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = sheetState)
+    val fusedLocationClient = remember { LocationServices.getFusedLocationProviderClient(context) }
+
+    MapKitFactory.setApiKey("fb01341c-367a-49b3-bfa0-7bcda8ac61bf")
+    MapKitFactory.initialize(context)
+    MapKitFactory.getInstance().onStart()
+
 
     BottomSheetScaffold(
         scaffoldState = scaffoldState,
@@ -246,6 +273,19 @@ fun MainScreen(
                 .padding(paddingValues)
                 .background(Color.DarkGray)
         ) {
+            Box(
+            ) {
+                AndroidView(
+                    factory = { context ->
+                        mapView = MapView(context)
+                        mapView.map.move(
+                            CameraPosition(Point(55.7558, 37.6173), zoom, 0f, 0f) // Пример с координатами Москвы
+                        )
+                        mapView
+                    },
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
             if (sheetState.currentValue == SheetValue.PartiallyExpanded)
             Column {
                 Spacer(modifier = Modifier.height(30.dp))
@@ -313,7 +353,7 @@ fun MainScreen(
                             }
                         )
                     }
-                    Spacer(modifier = Modifier.width(7.dp)) // Отступ между полем и кругом
+                    Spacer(modifier = Modifier.width(7.dp))
 
                     Box(
                         modifier = Modifier
@@ -365,7 +405,70 @@ fun MainScreen(
                     }
                 }
             }
-
+            Column {
+                Spacer(modifier = Modifier.height(230.dp))
+                Row{
+                    Spacer(modifier = Modifier.weight(1f))
+                    Column {
+                        Button(
+                            onClick = {
+                                val currentPosition = mapView.map.cameraPosition
+                                val newZoom = currentPosition.zoom + 1 // Увеличиваем на 1 уровень
+                                val newPosition = CameraPosition(
+                                    currentPosition.target, // Сохраняем текущие координаты
+                                    newZoom,
+                                    currentPosition.azimuth,
+                                    currentPosition.tilt
+                                )
+                                mapView.map.move(newPosition)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Add,
+                                contentDescription = ""
+                            )
+                        }
+                        Button(
+                            onClick = {
+                                val currentPosition = mapView.map.cameraPosition
+                                val newZoom = currentPosition.zoom - 1 // Увеличиваем на 1 уровень
+                                val newPosition = CameraPosition(
+                                    currentPosition.target, // Сохраняем текущие координаты
+                                    newZoom,
+                                    currentPosition.azimuth,
+                                    currentPosition.tilt
+                                )
+                                mapView.map.move(newPosition)
+                            }
+                        ) {
+                            Icon(
+                                painter = painterResource(MR.images.remove.drawableResId),
+                                contentDescription = ""
+                            )
+                        }
+                        Button(
+                            onClick = {
+                                fusedLocationClient.lastLocation.addOnSuccessListener { location: android.location.Location? ->
+                                    if (location != null) {
+                                        userLocation = Point(location.latitude, location.longitude)
+                                        mapView.map.move(
+                                            CameraPosition(userLocation, 17f, 0f, 0f),
+                                            Animation(Animation.Type.SMOOTH, 1f),
+                                            null
+                                        )
+                                    }
+                                }
+                            }
+                        ) {
+                            Icon(
+                                painter = painterResource(MR.images.depth.drawableResId),
+                                contentDescription = ""
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(10.dp))
+                }
+            }
         }
     }
 }

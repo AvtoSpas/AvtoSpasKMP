@@ -12,3 +12,11 @@ buildscript {
         classpath(libs.resources.generator)
     }
 }
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://maven.yandex.ru") // убираем `url = uri(...)`
+    }
+}
