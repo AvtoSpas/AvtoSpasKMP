@@ -24,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -43,22 +44,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.avtospas.core_ui.theme.AvtoSpasTheme
 
-data class CustomRudioOption(
-    val tag: String,
-    val icon: ImageBitmap,
-    val time: String,
-    val title: String,
-    val price: String
-)
-
-
-
 @Composable
 fun CreateOrderColumn(
     imageId: Int,
     walletImageId : Int,
     settingsImageId : Int,
-    orderStringId : Int
+    orderStringId : Int,
+    changeColumn: () -> Unit,
+    selectedOption: MutableState<CustomRadioOption?>
 ){
     var from by remember { mutableStateOf("") }
     var to by remember { mutableStateOf("") }
@@ -67,14 +60,14 @@ fun CreateOrderColumn(
 
     //Temp
 
-    var selectedOption by remember { mutableStateOf("") }
+    var selectedOptionId by remember { mutableStateOf("") }
     val options = remember { mutableStateListOf(
-        CustomRudioOption("1", ImageBitmap(1, 1), "8 минут", "Со сдвижной платформой", "5000,00"),
-        CustomRudioOption("2", ImageBitmap(1, 1), "10 минут", "Со сдвижной платформой", "7000,00"),
-        CustomRudioOption("3", ImageBitmap(1, 1), "12 минут", "Со сдвижной платформой", "8000,00"),
-        CustomRudioOption("4", ImageBitmap(1, 1), "13 минут", "Со сдвижной платформой", "10000,00"),
-        CustomRudioOption("5", ImageBitmap(1, 1), "15 минут", "Со сдвижной платформой", "12000,00"),
-        CustomRudioOption("6", ImageBitmap(1, 1), "17 минут", "Со сдвижной платформой", "15000,00"),
+        CustomRadioOption("1", ImageBitmap(1, 1), "8 минут", "Со сдвижной платформой", "5000,00"),
+        CustomRadioOption("2", ImageBitmap(1, 1), "10 минут", "Со сдвижной платформой", "7000,00"),
+        CustomRadioOption("3", ImageBitmap(1, 1), "12 минут", "Со сдвижной платформой", "8000,00"),
+        CustomRadioOption("4", ImageBitmap(1, 1), "13 минут", "Со сдвижной платформой", "10000,00"),
+        CustomRadioOption("5", ImageBitmap(1, 1), "15 минут", "Со сдвижной платформой", "12000,00"),
+        CustomRadioOption("6", ImageBitmap(1, 1), "17 минут", "Со сдвижной платформой", "15000,00"),
     ) }
     Column(
         modifier = Modifier
@@ -192,8 +185,8 @@ fun CreateOrderColumn(
                 Box(
                     modifier = Modifier
                         .clip(RoundedCornerShape(8.dp))
-                        .background(if (option.tag == selectedOption) AvtoSpasTheme.colorScheme.lightGray else AvtoSpasTheme.colorScheme.whiteGray)
-                        .clickable { selectedOption = option.tag }
+                        .background(if (option.tag == selectedOptionId) AvtoSpasTheme.colorScheme.lightGray else AvtoSpasTheme.colorScheme.whiteGray)
+                        .clickable { selectedOptionId = option.tag; selectedOption.value = options.find{it.tag == selectedOptionId} }
                         .padding(vertical = 12.dp, horizontal = 16.dp)
                         .width(80.dp)
                         .testTag(option.tag),
@@ -271,7 +264,7 @@ fun CreateOrderColumn(
                     .padding(horizontal = 30.dp)
                     .weight(1f),
                 //enabled = ,
-                onClick = { }
+                onClick = { changeColumn()}
             ) {
                 Text(
                     text = stringResource(id = orderStringId),

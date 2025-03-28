@@ -1,10 +1,8 @@
 package ru.avtospas.feature.main.presentation
 
 import android.annotation.SuppressLint
-import android.media.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,13 +16,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -44,43 +39,27 @@ import androidx.compose.ui.unit.sp
 import ru.avtospas.core_ui.theme.AvtoSpasTheme
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import dev.icerock.moko.resources.ImageResource
 import ru.avtospas.feature.login.MR
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ExitToApp
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.IconButton
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.location.LocationServices
-import com.google.firebase.firestore.GeoPoint
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.mapview.MapView
-import components.AvtoSpasRedButton
 import components.CreateOrderColumn
-import dev.icerock.moko.resources.compose.stringResource
-import ru.avtospas.feature.main.R
 import com.yandex.mapkit.geometry.Point
-import com.yandex.mapkit.location.Location
+import components.CustomRadioOption
+import components.OrderColumn
+import components.OrderData
 import components.UserMenuColumn
 
 
@@ -98,9 +77,13 @@ fun MainScreen(
     var surname by remember { mutableStateOf("Иванов") }
     var name by remember { mutableStateOf("Иван") }
 
-    var zoom by remember { mutableStateOf(10f) }
+    var isOrderExist by remember { mutableStateOf(false)}
 
     var userLocation by remember { mutableStateOf(Point(55.7558, 37.6173)) }
+
+    val selectedOption = remember { mutableStateOf<CustomRadioOption?>(null) }
+
+    val orderData = remember { mutableStateOf(OrderData("белая", "ГАЗ NEXT", "o555oo155", "Игорь", "4,8")) }
 
     val context = LocalContext.current
     lateinit var mapView: MapView
@@ -121,12 +104,22 @@ fun MainScreen(
             .background(AvtoSpasTheme.colorScheme.whiteGray),
         sheetContent = {
             if (sheetState.currentValue == SheetValue.PartiallyExpanded)
-            CreateOrderColumn(
-                MR.images.truck.drawableResId,
-                MR.images.wallet.drawableResId,
-                MR.images.sliders.drawableResId,
-                MR.strings.order.resourceId
-            )
+                if(!isOrderExist)
+                    CreateOrderColumn(
+                        MR.images.truck.drawableResId,
+                        MR.images.wallet.drawableResId,
+                        MR.images.sliders.drawableResId,
+                        MR.strings.order.resourceId,
+                        {isOrderExist = !isOrderExist},
+                        selectedOption
+                    )
+                else
+                    OrderColumn(
+                        raiting,
+                        selectedOption,
+                        orderData,
+                        MR.images.message.drawableResId
+                    )
             else
                 UserMenuColumn(
                     name,

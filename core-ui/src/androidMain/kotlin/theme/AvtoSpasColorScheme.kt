@@ -17,8 +17,8 @@ data class AvtoSpasColorScheme internal constructor(
     val searchIconColor : Color = Color.Unspecified,
     val whiteGray: Color = Color.Unspecified,
     val blackGray: Color = Color.Unspecified,
-    val darkLightGray:Color = Color.Unspecified
-
+    val darkLightGray:Color = Color.Unspecified,
+    val green: Color = Color.Green
 ) {
     companion object {
         val Light = AvtoSpasColorScheme(
