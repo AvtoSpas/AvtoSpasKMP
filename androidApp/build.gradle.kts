@@ -52,6 +52,9 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+    implementation(libs.maps.mobile)
+    implementation(libs.maps.mobile)
+    implementation(libs.maps.mobile)
 
     debugImplementation(libs.compose.ui.tooling)
 

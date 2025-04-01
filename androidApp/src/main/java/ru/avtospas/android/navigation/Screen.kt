@@ -13,6 +13,18 @@ sealed class Screen {
     @Serializable
     data object MainScreen : Screen()
 
+    @Serializable
+    data object EditProfileScreen : Screen()
+
+    @Serializable
+    data object OrderScreens : Screen()
+
+    @Serializable
+    data object SettingsScreen : Screen()
+
+    @Serializable
+    data object SupportScreen : Screen()
+
 //    @Serializable
 //    object PhoneScreen : Screen()
 //

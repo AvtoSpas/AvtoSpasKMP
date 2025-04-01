@@ -34,7 +34,12 @@ fun UserMenuColumn(
     name: String,
     surname: String,
     raiting: String,
-    selfLocation: String
+    selfLocation: String,
+    onNavigateToStartScreen: () -> Unit,
+    onNavigateToEditProfileScreen: () -> Unit,
+    onNavigationToOrdersScreen: () -> Unit,
+    onNavigationToSettingsScreen: () -> Unit,
+    onNavigationToSupportScreen: () -> Unit
 ){
     Column(
         modifier = Modifier
@@ -64,7 +69,7 @@ fun UserMenuColumn(
                     lineHeight = 16.sp
                 )
                 Button(
-                    onClick = {},
+                    onClick = onNavigateToEditProfileScreen,
                     colors = ButtonDefaults.buttonColors(containerColor = AvtoSpasTheme.colorScheme.grayButtonBorder),
                     shape = RoundedCornerShape(5.dp),
                     contentPadding = PaddingValues(5.dp)
@@ -108,7 +113,7 @@ fun UserMenuColumn(
             color = AvtoSpasTheme.colorScheme.defBlackWhite
         )
         Button(
-            onClick = {},
+            onClick = onNavigationToOrdersScreen,
             colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
             shape = RoundedCornerShape(5.dp),
             contentPadding = PaddingValues(0.dp)
@@ -130,7 +135,7 @@ fun UserMenuColumn(
             )
         }
         Button(
-            onClick = {},
+            onClick = onNavigationToSupportScreen,
             colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
             shape = RoundedCornerShape(5.dp),
             contentPadding = PaddingValues(0.dp)
@@ -151,9 +156,20 @@ fun UserMenuColumn(
                 color = AvtoSpasTheme.colorScheme.defBlackWhite
             )
         }
-        Spacer(modifier = Modifier.height(400.dp))
         Button(
-            onClick = {},
+            onClick = onNavigationToSettingsScreen,
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+            shape = RoundedCornerShape(5.dp),
+            contentPadding = PaddingValues(0.dp)
+        ) {
+            Text(
+                text = "Настройки",
+                color = AvtoSpasTheme.colorScheme.defBlackWhite
+            )
+        }
+        Spacer(modifier = Modifier.height(350.dp))
+        Button(
+            onClick = onNavigateToStartScreen,
             colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
             shape = RoundedCornerShape(5.dp),
             contentPadding = PaddingValues(0.dp)

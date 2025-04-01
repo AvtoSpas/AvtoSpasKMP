@@ -52,7 +52,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.location.LocationServices
 import com.yandex.mapkit.Animation
-import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.mapview.MapView
 import components.CreateOrderColumn
@@ -67,8 +66,12 @@ import components.UserMenuColumn
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
-
-){
+    onNavigateToStartScreen: () -> Unit,
+    onNavigateToEditProfileScreen: () -> Unit,
+    onNavigationToOrdersScreen: () -> Unit,
+    onNavigationToSettingsScreen: () -> Unit,
+    onNavigationToSupportScreen: () -> Unit
+) {
     var address by remember { mutableStateOf("") }
     var raiting by remember { mutableStateOf("4,9") }
 
@@ -92,9 +95,7 @@ fun MainScreen(
     val scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = sheetState)
     val fusedLocationClient = remember { LocationServices.getFusedLocationProviderClient(context) }
 
-    MapKitFactory.setApiKey("fb01341c-367a-49b3-bfa0-7bcda8ac61bf")
-    MapKitFactory.initialize(context)
-    MapKitFactory.getInstance().onStart()
+
 
 
     BottomSheetScaffold(
@@ -125,7 +126,12 @@ fun MainScreen(
                     name,
                     surname,
                     raiting,
-                    selfLocation
+                    selfLocation,
+                    onNavigateToStartScreen,
+                    onNavigateToEditProfileScreen,
+                    onNavigationToOrdersScreen,
+                    onNavigationToSettingsScreen,
+                    onNavigationToSupportScreen
                 )
         }
     ) { paddingValues ->

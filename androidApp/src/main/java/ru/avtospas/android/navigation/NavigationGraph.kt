@@ -4,9 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import ru.avtospas.feature.edit_profile.presentation.EditProfileScreen
 import ru.avtospas.feature.login.presentation.SignUpScreen
 import ru.avtospas.feature.login.presentation.StartScreen
 import ru.avtospas.feature.main.presentation.MainScreen
+import ru.avtospas.feature.orders.presentation.OrderScreen
+import ru.avtospas.feature.settings.presentation.SettingsScreen
+import ru.avtospas.feature.support.presentation.SupportScreen
 
 @Composable
 fun NavigationGraph(
@@ -34,7 +38,28 @@ fun NavigationGraph(
 
         composable<Screen.MainScreen> {
             MainScreen(
+                onNavigateToStartScreen = { navController.navigate(Screen.StartScreen) },
+                onNavigateToEditProfileScreen = {navController.navigate(Screen.EditProfileScreen)},
+                onNavigationToOrdersScreen = {navController.navigate(Screen.OrderScreens)},
+                onNavigationToSettingsScreen = {navController.navigate(Screen.SettingsScreen)},
+                onNavigationToSupportScreen = {navController.navigate(Screen.SupportScreen)}
             )
+        }
+
+        composable<Screen.EditProfileScreen> {
+            EditProfileScreen()
+        }
+
+        composable<Screen.OrderScreens> {
+            OrderScreen()
+        }
+
+        composable<Screen.SettingsScreen> {
+            SettingsScreen()
+        }
+
+        composable<Screen.SupportScreen> {
+            SupportScreen()
         }
 
 //        // TODO: remove excessive screens
