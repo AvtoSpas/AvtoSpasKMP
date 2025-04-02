@@ -56,3 +56,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+dependencies {
+    implementation(project(":features:orders"))
+    implementation(project(":core-ui"))
+    implementation(project(":features:login"))
+}
