@@ -47,19 +47,27 @@ fun NavigationGraph(
         }
 
         composable<Screen.EditProfileScreen> {
-            EditProfileScreen()
+            EditProfileScreen(
+                onNavigateToMainScreen = {navController.navigate(Screen.MainScreen)}
+            )
         }
 
         composable<Screen.OrderScreens> {
-            OrderScreen()
+            OrderScreen(
+                onNavigateToMainScreen = {navController.navigate(Screen.MainScreen)}
+            )
         }
 
         composable<Screen.SettingsScreen> {
-            SettingsScreen()
+            SettingsScreen(
+                onNavigateToMainScreen = {navController.navigate(Screen.MainScreen)}
+            )
         }
 
         composable<Screen.SupportScreen> {
-            SupportScreen()
+            SupportScreen(
+                onNavigateToMainScreen = {navController.navigate(Screen.MainScreen)}
+            )
         }
 
 //        // TODO: remove excessive screens
