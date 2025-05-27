@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,14 +11,28 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		2F01BB692D62436C005A4423 /* RegistrationNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01BB682D62436A005A4423 /* RegistrationNameScreen.swift */; };
+		2F35975D2DA6E35D00815416 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35975C2DA6E35D00815416 /* EditProfileView.swift */; };
+		2F35975F2DA6E3A000815416 /* HistoryOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35975E2DA6E3A000815416 /* HistoryOrdersView.swift */; };
+		2F3597612DA6E40D00815416 /* HelpWithOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3597602DA6E40D00815416 /* HelpWithOrdersView.swift */; };
+		2F3597632DA6E45300815416 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3597622DA6E45300815416 /* UserSettingsView.swift */; };
+		2F3597652DA6F24000815416 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3597642DA6F24000815416 /* OrderModel.swift */; };
+		2F3597672DA6F5B100815416 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3597662DA6F5B100815416 /* OrdersViewModel.swift */; };
+		2F3597692DA6F83000815416 /* OrderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3597682DA6F83000815416 /* OrderCellView.swift */; };
+		2F35976E2DA8D17700815416 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35976D2DA8D17500815416 /* ViewExtensions.swift */; };
 		2F67FFB32D5DDFAD00B57EEE /* TextConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67FFB22D5DDFA100B57EEE /* TextConstants.swift */; };
 		2F67FFB82D62292200B57EEE /* RegistrationNumberScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67FFB72D62291F00B57EEE /* RegistrationNumberScreen.swift */; };
 		2F67FFBB2D62308D00B57EEE /* CheckNumberScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67FFBA2D62308D00B57EEE /* CheckNumberScreen.swift */; };
 		2F991BC02D88078D008DC99F /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F991BBF2D88078D008DC99F /* CarModel.swift */; };
 		2F991BC32D880972008DC99F /* CarsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F991BC22D880972008DC99F /* CarsViewModel.swift */; };
 		2F991BC52D881262008DC99F /* CarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F991BC42D881262008DC99F /* CarCellView.swift */; };
+		2FB21CE42D964EBF00F9FDC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB21CE32D964EB900F9FDC1 /* AppDelegate.swift */; };
+		2FB21CE62D964F6600F9FDC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB21CE52D964F5B00F9FDC1 /* SceneDelegate.swift */; };
+		2FB21CEA2D9651FB00F9FDC1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB21CE92D9651F200F9FDC1 /* MapView.swift */; };
 		2FBC2B8C2D83416B002992B4 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */; };
 		2FBC2B8E2D8341A2002992B4 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC2B8D2D8341A2002992B4 /* MainScreen.swift */; };
+		2FF308EE2DA57CE10015F11A /* MainOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF308ED2DA57CE10015F11A /* MainOrderView.swift */; };
+		2FF308F02DA57D740015F11A /* ProfileMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF308EF2DA57D740015F11A /* ProfileMenuView.swift */; };
+		315F56927AE653797ED33905 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20C14988D048AD22B553A45 /* Pods_iosApp.framework */; };
 		7555FF83242A565900829871 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* StartScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,17 +54,33 @@
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		2F01BB682D62436A005A4423 /* RegistrationNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationNameScreen.swift; sourceTree = "<group>"; };
+		2F35975C2DA6E35D00815416 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		2F35975E2DA6E3A000815416 /* HistoryOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOrdersView.swift; sourceTree = "<group>"; };
+		2F3597602DA6E40D00815416 /* HelpWithOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpWithOrdersView.swift; sourceTree = "<group>"; };
+		2F3597622DA6E45300815416 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		2F3597642DA6F24000815416 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		2F3597662DA6F5B100815416 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
+		2F3597682DA6F83000815416 /* OrderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCellView.swift; sourceTree = "<group>"; };
+		2F35976D2DA8D17500815416 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		2F67FFB22D5DDFA100B57EEE /* TextConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConstants.swift; sourceTree = "<group>"; };
 		2F67FFB72D62291F00B57EEE /* RegistrationNumberScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationNumberScreen.swift; sourceTree = "<group>"; };
 		2F67FFBA2D62308D00B57EEE /* CheckNumberScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNumberScreen.swift; sourceTree = "<group>"; };
 		2F991BBF2D88078D008DC99F /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
 		2F991BC22D880972008DC99F /* CarsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewModel.swift; sourceTree = "<group>"; };
 		2F991BC42D881262008DC99F /* CarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCellView.swift; sourceTree = "<group>"; };
+		2FB21CE32D964EB900F9FDC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2FB21CE52D964F5B00F9FDC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2FB21CE92D9651F200F9FDC1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		2FBC2B8D2D8341A2002992B4 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		2FF308ED2DA57CE10015F11A /* MainOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOrderView.swift; sourceTree = "<group>"; };
+		2FF308EF2DA57D740015F11A /* ProfileMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuView.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B20C14988D048AD22B553A45 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC4D3367F96DF1F3C9480FC /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
+		FD131E184BE3ABB7B42026F7 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				315F56927AE653797ED33905 /* Pods_iosApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +103,25 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2F35975B2DA6E33700815416 /* ProfileMenuViews */ = {
+			isa = PBXGroup;
+			children = (
+				2F35975C2DA6E35D00815416 /* EditProfileView.swift */,
+				2F35975E2DA6E3A000815416 /* HistoryOrdersView.swift */,
+				2F3597602DA6E40D00815416 /* HelpWithOrdersView.swift */,
+				2F3597622DA6E45300815416 /* UserSettingsView.swift */,
+			);
+			path = ProfileMenuViews;
+			sourceTree = "<group>";
+		};
+		2F35976C2DA8D16500815416 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2F35976D2DA8D17500815416 /* ViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2F67FFB12D5DDF8A00B57EEE /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +133,7 @@
 		2F67FFB42D5DDFEA00B57EEE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2F35975B2DA6E33700815416 /* ProfileMenuViews */,
 				2FBC2B882D834104002992B4 /* Components */,
 				2FBC2B872D8306F3002992B4 /* MainViews */,
 				2FBC2B862D8306B9002992B4 /* LoginViews */,
@@ -90,16 +141,10 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		2F67FFB52D5DDFF100B57EEE /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		2F991BBC2D88074F008DC99F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2F3597642DA6F24000815416 /* OrderModel.swift */,
 				2F991BBF2D88078D008DC99F /* CarModel.swift */,
 			);
 			path = Models;
@@ -108,6 +153,7 @@
 		2F991BC12D88085B008DC99F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2F3597662DA6F5B100815416 /* OrdersViewModel.swift */,
 				2F991BC22D880972008DC99F /* CarsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -135,8 +181,12 @@
 		2FBC2B882D834104002992B4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2FB21CE92D9651F200F9FDC1 /* MapView.swift */,
 				2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */,
 				2F991BC42D881262008DC99F /* CarCellView.swift */,
+				2FF308ED2DA57CE10015F11A /* MainOrderView.swift */,
+				2FF308EF2DA57D740015F11A /* ProfileMenuView.swift */,
+				2F3597682DA6F83000815416 /* OrderCellView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -147,6 +197,7 @@
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF7C242A565900829871 /* Products */,
 				7555FFB0242A642200829871 /* Frameworks */,
+				E96C7C08D4131B7B6BE0BCC6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,9 +212,11 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				2F35976C2DA8D16500815416 /* Extensions */,
+				2FB21CE52D964F5B00F9FDC1 /* SceneDelegate.swift */,
+				2FB21CE32D964EB900F9FDC1 /* AppDelegate.swift */,
 				2F991BC12D88085B008DC99F /* ViewModels */,
 				2F991BBC2D88074F008DC99F /* Models */,
-				2F67FFB52D5DDFF100B57EEE /* ViewControllers */,
 				2F67FFB42D5DDFEA00B57EEE /* Views */,
 				2F67FFB12D5DDF8A00B57EEE /* Constants */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -177,8 +230,18 @@
 		7555FFB0242A642200829871 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B20C14988D048AD22B553A45 /* Pods_iosApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E96C7C08D4131B7B6BE0BCC6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CEC4D3367F96DF1F3C9480FC /* Pods-iosApp.debug.xcconfig */,
+				FD131E184BE3ABB7B42026F7 /* Pods-iosApp.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,12 +251,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7555FFA5242A565B00829871 /* Build configuration list for PBXNativeTarget "iosApp" */;
 			buildPhases = (
+				66C047E6894A9613A8ACDCD0 /* [CP] Check Pods Manifest.lock */,
 				7555FFB5242A651A00829871 /* ShellScript */,
 				7555FF77242A565900829871 /* Sources */,
 				7555FF78242A565900829871 /* Frameworks */,
 				7555FF79242A565900829871 /* Resources */,
 				7555FFB4242A642300829871 /* Embed Frameworks */,
 				83CF508C2D7CACD0004B7F2F /* ShellScript */,
+				8CEFAB5C6F3C9724016711CC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +315,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		66C047E6894A9613A8ACDCD0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iosApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7555FFB5242A651A00829871 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +371,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/../gradlew\" -p \"$SRCROOT/../\" :shared:copyFrameworkResourcesToApp \\\n    -Pmoko.resources.PLATFORM_NAME=\"$PLATFORM_NAME\" \\\n    -Pmoko.resources.CONFIGURATION=\"$CONFIGURATION\" \\\n    -Pmoko.resources.ARCHS=\"$ARCHS\" \\\n    -Pmoko.resources.BUILT_PRODUCTS_DIR=\"$BUILT_PRODUCTS_DIR\" \\\n    -Pmoko.resources.CONTENTS_FOLDER_PATH=\"$CONTENTS_FOLDER_PATH\" \n";
 		};
+		8CEFAB5C6F3C9724016711CC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -291,13 +395,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F3597632DA6E45300815416 /* UserSettingsView.swift in Sources */,
+				2F35975F2DA6E3A000815416 /* HistoryOrdersView.swift in Sources */,
+				2FB21CE42D964EBF00F9FDC1 /* AppDelegate.swift in Sources */,
+				2F35975D2DA6E35D00815416 /* EditProfileView.swift in Sources */,
+				2FF308F02DA57D740015F11A /* ProfileMenuView.swift in Sources */,
 				2FBC2B8E2D8341A2002992B4 /* MainScreen.swift in Sources */,
 				2F01BB692D62436C005A4423 /* RegistrationNameScreen.swift in Sources */,
+				2F3597692DA6F83000815416 /* OrderCellView.swift in Sources */,
 				2F991BC52D881262008DC99F /* CarCellView.swift in Sources */,
+				2FF308EE2DA57CE10015F11A /* MainOrderView.swift in Sources */,
+				2F3597672DA6F5B100815416 /* OrdersViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				2F67FFB32D5DDFAD00B57EEE /* TextConstants.swift in Sources */,
 				2F67FFB82D62292200B57EEE /* RegistrationNumberScreen.swift in Sources */,
+				2FB21CEA2D9651FB00F9FDC1 /* MapView.swift in Sources */,
 				2F991BC32D880972008DC99F /* CarsViewModel.swift in Sources */,
+				2FB21CE62D964F6600F9FDC1 /* SceneDelegate.swift in Sources */,
+				2F3597652DA6F24000815416 /* OrderModel.swift in Sources */,
+				2F35976E2DA8D17700815416 /* ViewExtensions.swift in Sources */,
+				2F3597612DA6E40D00815416 /* HelpWithOrdersView.swift in Sources */,
 				2F991BC02D88078D008DC99F /* CarModel.swift in Sources */,
 				2FBC2B8C2D83416B002992B4 /* BottomSheetView.swift in Sources */,
 				7555FF83242A565900829871 /* StartScreen.swift in Sources */,
@@ -426,6 +543,7 @@
 		};
 		7555FFA6242A565B00829871 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEC4D3367F96DF1F3C9480FC /* Pods-iosApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -456,6 +574,7 @@
 		};
 		7555FFA7242A565B00829871 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD131E184BE3ABB7B42026F7 /* Pods-iosApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

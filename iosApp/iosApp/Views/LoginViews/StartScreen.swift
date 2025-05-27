@@ -16,15 +16,15 @@ struct StartScreen: View {
                 Image("StartScreenImage")
                     .padding(.leading, 60)
                 NavigationLink(destination: RegistrationNumberScreen()){
-                    Text("Вход").foregroundColor(.white)
+                    Text("Регистрация").foregroundColor(.white)
                         .font(.system(size: 20))
                         .frame(width: 348, height: 61)
                         .background(Color("MainPrimaryButtonColor"))
                         .cornerRadius(10)
                         .padding(.top, 70)
                 }
-                NavigationLink(destination: RegistrationNumberScreen()) {
-                    Text("Регистрация").foregroundColor(colorScheme == .dark ? .white : Color("MainSecondaryTextColor"))
+                NavigationLink(destination: MainScreen()) {
+                    Text("Вход").foregroundColor(colorScheme == .dark ? .white : Color("MainSecondaryTextColor"))
                         .font(.system(size: 20))
                         .frame(width: 348, height: 61)
                         .background(colorScheme == .dark ? Color("OutlineButtonColor") : .white)
@@ -36,7 +36,6 @@ struct StartScreen: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .padding()
         }
-        
-        
+        .navigationBarBackButtonHidden(true)
     }
 }
