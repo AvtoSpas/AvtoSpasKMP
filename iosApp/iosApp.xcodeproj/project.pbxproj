@@ -30,6 +30,11 @@
 		2FB21CEA2D9651FB00F9FDC1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB21CE92D9651F200F9FDC1 /* MapView.swift */; };
 		2FBC2B8C2D83416B002992B4 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */; };
 		2FBC2B8E2D8341A2002992B4 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC2B8D2D8341A2002992B4 /* MainScreen.swift */; };
+		2FEDC6E82DF19D720006C3A1 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEDC6E72DF19D670006C3A1 /* KeyboardResponder.swift */; };
+		2FEDC6EA2DF1B67F0006C3A1 /* CustomPhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEDC6E92DF1B66E0006C3A1 /* CustomPhoneTextField.swift */; };
+		2FEDC6EC2DF1B75C0006C3A1 /* CustomCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEDC6EB2DF1B74D0006C3A1 /* CustomCodeTextField.swift */; };
+		2FEDC6EE2DF1BCFC0006C3A1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEDC6ED2DF1BCE70006C3A1 /* CustomTextField.swift */; };
+		2FEDC6F02DF1EF820006C3A1 /* PrimaryOrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEDC6EF2DF1EF700006C3A1 /* PrimaryOrangeButton.swift */; };
 		2FF308EE2DA57CE10015F11A /* MainOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF308ED2DA57CE10015F11A /* MainOrderView.swift */; };
 		2FF308F02DA57D740015F11A /* ProfileMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF308EF2DA57D740015F11A /* ProfileMenuView.swift */; };
 		315F56927AE653797ED33905 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20C14988D048AD22B553A45 /* Pods_iosApp.framework */; };
@@ -73,6 +78,11 @@
 		2FB21CE92D9651F200F9FDC1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		2FBC2B8D2D8341A2002992B4 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		2FEDC6E72DF19D670006C3A1 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		2FEDC6E92DF1B66E0006C3A1 /* CustomPhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPhoneTextField.swift; sourceTree = "<group>"; };
+		2FEDC6EB2DF1B74D0006C3A1 /* CustomCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCodeTextField.swift; sourceTree = "<group>"; };
+		2FEDC6ED2DF1BCE70006C3A1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		2FEDC6EF2DF1EF700006C3A1 /* PrimaryOrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryOrangeButton.swift; sourceTree = "<group>"; };
 		2FF308ED2DA57CE10015F11A /* MainOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOrderView.swift; sourceTree = "<group>"; };
 		2FF308EF2DA57D740015F11A /* ProfileMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuView.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +127,7 @@
 		2F35976C2DA8D16500815416 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2FEDC6E72DF19D670006C3A1 /* KeyboardResponder.swift */,
 				2F35976D2DA8D17500815416 /* ViewExtensions.swift */,
 			);
 			path = Extensions;
@@ -181,6 +192,10 @@
 		2FBC2B882D834104002992B4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2FEDC6EF2DF1EF700006C3A1 /* PrimaryOrangeButton.swift */,
+				2FEDC6ED2DF1BCE70006C3A1 /* CustomTextField.swift */,
+				2FEDC6EB2DF1B74D0006C3A1 /* CustomCodeTextField.swift */,
+				2FEDC6E92DF1B66E0006C3A1 /* CustomPhoneTextField.swift */,
 				2FB21CE92D9651F200F9FDC1 /* MapView.swift */,
 				2FBC2B8B2D83416B002992B4 /* BottomSheetView.swift */,
 				2F991BC42D881262008DC99F /* CarCellView.swift */,
@@ -379,9 +394,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -395,12 +414,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FEDC6EE2DF1BCFC0006C3A1 /* CustomTextField.swift in Sources */,
 				2F3597632DA6E45300815416 /* UserSettingsView.swift in Sources */,
 				2F35975F2DA6E3A000815416 /* HistoryOrdersView.swift in Sources */,
 				2FB21CE42D964EBF00F9FDC1 /* AppDelegate.swift in Sources */,
 				2F35975D2DA6E35D00815416 /* EditProfileView.swift in Sources */,
 				2FF308F02DA57D740015F11A /* ProfileMenuView.swift in Sources */,
 				2FBC2B8E2D8341A2002992B4 /* MainScreen.swift in Sources */,
+				2FEDC6F02DF1EF820006C3A1 /* PrimaryOrangeButton.swift in Sources */,
 				2F01BB692D62436C005A4423 /* RegistrationNameScreen.swift in Sources */,
 				2F3597692DA6F83000815416 /* OrderCellView.swift in Sources */,
 				2F991BC52D881262008DC99F /* CarCellView.swift in Sources */,
@@ -413,12 +434,15 @@
 				2F991BC32D880972008DC99F /* CarsViewModel.swift in Sources */,
 				2FB21CE62D964F6600F9FDC1 /* SceneDelegate.swift in Sources */,
 				2F3597652DA6F24000815416 /* OrderModel.swift in Sources */,
+				2FEDC6E82DF19D720006C3A1 /* KeyboardResponder.swift in Sources */,
 				2F35976E2DA8D17700815416 /* ViewExtensions.swift in Sources */,
 				2F3597612DA6E40D00815416 /* HelpWithOrdersView.swift in Sources */,
 				2F991BC02D88078D008DC99F /* CarModel.swift in Sources */,
 				2FBC2B8C2D83416B002992B4 /* BottomSheetView.swift in Sources */,
 				7555FF83242A565900829871 /* StartScreen.swift in Sources */,
+				2FEDC6EC2DF1B75C0006C3A1 /* CustomCodeTextField.swift in Sources */,
 				2F67FFBB2D62308D00B57EEE /* CheckNumberScreen.swift in Sources */,
+				2FEDC6EA2DF1B67F0006C3A1 /* CustomPhoneTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@ struct MainScreen: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                                HStack {
+                HStack {
                     HStack {
                         Image("FindMark").frame(width: 24, height: 24)
                         TextField("Найдем адрес тут?", text: .constant(""))

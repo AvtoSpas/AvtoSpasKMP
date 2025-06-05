@@ -37,7 +37,7 @@ struct BottomSheetView<Content: View>: View {
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.maxHeight = maxHeight
-        self.minHeight = maxHeight * Constants.minHeightRatio
+        self.minHeight = maxHeight * Constants.minHeightRatio / 0.9
         self._isProfileMode = isProfileMode
         self.content = content
     }
@@ -87,7 +87,7 @@ struct BottomSheetView<Content: View>: View {
                 }
             }
             .onAppear {
-                currentOffset = maxHeight - minHeight
+                currentOffset = minHeight
             }
         }
     }
