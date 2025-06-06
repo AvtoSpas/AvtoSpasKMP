@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MainOrderView: View {
     @ObservedObject var carViewModel: CarsViewModel
+    @Binding var isOrderingCar: Bool
     
     var body: some View {
         VStack {
@@ -55,7 +56,9 @@ struct MainOrderView: View {
             
             HStack(spacing: 20) {
                 Image("wallet").frame(width: 31, height: 32)
-                Button(action: {}) {
+                Button(action: {
+                    isOrderingCar = true
+                }) {
                     Text("Заказать")
                         .foregroundColor(.white)
                         .font(.system(size: 16))

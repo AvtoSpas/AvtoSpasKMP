@@ -11,19 +11,21 @@ import SwiftUI
 struct MainScreen: View {
     @State private var bottomSheetShown = false
     @State private var isProfileMode = false
+    @State private var isOrderingCar = false
     @StateObject private var carViewModel = CarsViewModel()
-    
+
     var body: some View {
         ZStack {
             YandexMapsView()
                 .edgesIgnoringSafeArea(.all)
-            
+
+            // MARK: - Кнопки управления картой
             VStack {
                 Spacer()
-                
+
                 VStack(spacing: 12) {
                     Button(action: {
-                        ///TODO:
+                        // Увеличение масштаба карты
                     }) {
                         Image(systemName: "plus")
                             .font(.system(size: 20, weight: .medium))
@@ -33,9 +35,9 @@ struct MainScreen: View {
                             .background(Color.white)
                             .clipShape(Circle())
                     }
-                    
+
                     Button(action: {
-                        ///TODO:
+                        // Уменьшение масштаба карты
                     }) {
                         Image(systemName: "minus")
                             .font(.system(size: 20, weight: .medium))
@@ -50,9 +52,9 @@ struct MainScreen: View {
                 .cornerRadius(16)
                 .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
                 .padding(.trailing, 16)
-                
+
                 Button(action: {
-                ///TODO:
+                    // Центрирование карты
                 }) {
                     Image(systemName: "location.fill")
                         .font(.system(size: 20, weight: .medium))
@@ -68,7 +70,8 @@ struct MainScreen: View {
                 .padding(.trailing, 16)
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
-            
+
+            // MARK: - Верхняя панель поиска и аватар
             VStack {
                 HStack {
                     HStack {
@@ -80,7 +83,7 @@ struct MainScreen: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(20)
-                    
+
                     ZStack(alignment: .topTrailing) {
                         Circle()
                             .overlay(
@@ -91,7 +94,7 @@ struct MainScreen: View {
                                     .padding(2)
                             )
                             .frame(width: 77, height: 79)
-                        
+
                         Text("4,9")
                             .font(.system(size: 8))
                             .font(.system(size: 18, weight: .bold))
@@ -102,28 +105,31 @@ struct MainScreen: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }
-                
-                
-                
+
+                // MARK: - BottomSheetView
                 GeometryReader { geometry in
                     BottomSheetView(
                         maxHeight: 787.0,
-                        isProfileMode: $isProfileMode
+                        isProfileMode: $isProfileMode,
+                        isOrderingCar: $isOrderingCar
                     ) {
                         if isProfileMode {
                             ProfileMenuView()
                                 .frame(maxHeight: .infinity, alignment: .top)
-                        } else {
-                            MainOrderView(carViewModel: carViewModel)
+                        } else if isOrderingCar {
+                            OrderCarView()
                                 .frame(maxHeight: .infinity, alignment: .top)
+                        } else {
+                            MainOrderView(
+                                carViewModel: carViewModel,
+                                isOrderingCar: $isOrderingCar
+                            )
+                            .frame(maxHeight: .infinity, alignment: .top)
                         }
                     }
                 }
-                
                 .edgesIgnoringSafeArea(.all)
             }
-            
-            
         }
         .onAppear {
             bottomSheetShown = false
