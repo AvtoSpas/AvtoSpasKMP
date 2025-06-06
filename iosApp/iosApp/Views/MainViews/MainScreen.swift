@@ -19,6 +19,57 @@ struct MainScreen: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                Spacer()
+                
+                VStack(spacing: 12) {
+                    Button(action: {
+                        ///TODO:
+                    }) {
+                        Image(systemName: "plus")
+                            .font(.system(size: 20, weight: .medium))
+                            .foregroundColor(.black)
+                            .frame(width: 20, height: 20)
+                            .padding()
+                            .background(Color.white)
+                            .clipShape(Circle())
+                    }
+                    
+                    Button(action: {
+                        ///TODO:
+                    }) {
+                        Image(systemName: "minus")
+                            .font(.system(size: 20, weight: .medium))
+                            .foregroundColor(.black)
+                            .frame(width: 20, height: 20)
+                            .padding()
+                            .background(Color.white)
+                            .clipShape(Circle())
+                    }
+                }
+                .background(Color.white)
+                .cornerRadius(16)
+                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                .padding(.trailing, 16)
+                
+                Button(action: {
+                ///TODO:
+                }) {
+                    Image(systemName: "location.fill")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundColor(.black)
+                        .frame(width: 20, height: 20)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                }
+                .padding(.top, 12)
+                .padding(.bottom, 350)
+                .padding(.trailing, 16)
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            
+            VStack {
                 HStack {
                     HStack {
                         Image("FindMark").frame(width: 24, height: 24)
@@ -52,9 +103,11 @@ struct MainScreen: View {
                     }
                 }
                 
+                
+                
                 GeometryReader { geometry in
                     BottomSheetView(
-                        maxHeight: geometry.size.height * 1,
+                        maxHeight: 787.0,
                         isProfileMode: $isProfileMode
                     ) {
                         if isProfileMode {
@@ -69,6 +122,8 @@ struct MainScreen: View {
                 
                 .edgesIgnoringSafeArea(.all)
             }
+            
+            
         }
         .onAppear {
             bottomSheetShown = false
